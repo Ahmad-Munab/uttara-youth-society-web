@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-off-white selection:bg-gold/20 selection:text-navy">
+    <div className="min-h-screen flex flex-col bg-off-white selection:bg-gold/20 selection:text-navy overflow-x-hidden">
       {/* 4-color Accent Bar from Demo */}
       <div className="accent-bar sticky top-0 z-50">
         <span style={{ backgroundColor: "#E8222E" }}></span>
@@ -12,70 +13,17 @@ export default function Home() {
         <span style={{ backgroundColor: "#FFB414" }}></span>
       </div>
 
-      {/* Navigation Bar with Actual Logo */}
-      <nav className="w-full px-6 py-3.5 flex items-center justify-between border-b border-navy/10 bg-white/75 backdrop-blur-md sticky top-[4px] z-40 transition-all">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-sm border border-navy/10 bg-white p-0.5 group-hover:scale-105 transition-transform">
-            <Image
-              src="/logo.png"
-              alt="Uttara Youth Society Logo"
-              width={40}
-              height={40}
-              className="object-contain w-full h-full"
-              priority
-            />
-          </div>
-          <div className="leading-tight">
-            <div className="font-display font-bold text-lg text-navy tracking-tight group-hover:text-gold transition-colors">
-              Uttara Youth Society
-            </div>
-            <div className="text-[11px] text-muted font-medium tracking-wide">
-              Debate Club · Est. Uttara, Dhaka
-            </div>
-          </div>
-        </Link>
-
-        <div className="flex items-center gap-6">
-          <Link
-            href="#about"
-            className="text-sm font-medium text-muted hover:text-navy transition-colors hidden sm:inline-block"
-          >
-            About Us
-          </Link>
-          <Link
-            href="#pillars"
-            className="text-sm font-medium text-muted hover:text-navy transition-colors hidden sm:inline-block"
-          >
-            Pillars
-          </Link>
-          <Link
-            href="#impact"
-            className="text-sm font-medium text-muted hover:text-navy transition-colors hidden md:inline-block"
-          >
-            Dual Impact
-          </Link>
-          <Link
-            href="/debate-partnership"
-            className="relative group inline-flex items-center justify-center px-4 py-2 bg-navy text-white text-sm font-medium rounded-full overflow-hidden shadow-sm hover:shadow-md transition-all hover:bg-navy-light"
-          >
-            <span className="relative z-10 flex items-center gap-1.5">
-              <span>Championship 2026</span>
-              <span className="px-1.5 py-0.5 text-[10px] bg-gold text-navy font-bold rounded-full">
-                Proposal
-              </span>
-            </span>
-          </Link>
-        </div>
-      </nav>
+      {/* Responsive Navigation Bar with Actual Logo & Mobile Drawer */}
+      <Navbar currentPage="home" />
 
       {/* Hero Section with Demo Atmospheric Dark Canvas */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-navy via-navy to-navy-light text-white px-6 py-24 md:py-36">
+      <section className="relative overflow-hidden bg-gradient-to-b from-navy via-navy to-navy-light text-white px-4 sm:px-6 py-16 sm:py-24 md:py-36">
         {/* Floating Ambient Orbs */}
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-br from-blue-light/15 via-gold/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
-        <div className="absolute top-1/3 -left-20 w-80 h-80 bg-blue/15 rounded-full blur-3xl pointer-events-none animate-float-slow" />
-        <div className="absolute bottom-10 right-[-50px] w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none animate-float-slower" />
+        <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[320px] sm:w-[600px] h-[250px] sm:h-[350px] bg-gradient-to-br from-blue-light/15 via-gold/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
+        <div className="absolute top-1/3 -left-20 w-48 sm:w-80 h-48 sm:h-80 bg-blue/15 rounded-full blur-3xl pointer-events-none animate-float-slow" />
+        <div className="absolute bottom-10 -right-16 w-56 sm:w-96 h-56 sm:h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none animate-float-slower" />
 
-        {/* Geometric SVG Polygons & Concentric Rings from HTML demo */}
+        {/* Geometric SVG Polygons & Concentric Rings */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none opacity-20"
           xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +47,7 @@ export default function Home() {
 
         <div className="relative max-w-4xl mx-auto text-center z-10">
           {/* Centered actual logo emblem with glowing glass container */}
-          <div className="mx-auto mb-8 w-24 h-24 md:w-28 md:h-28 rounded-2xl bg-white/10 backdrop-blur-md p-3 border border-white/20 shadow-2xl flex items-center justify-center relative group">
+          <div className="mx-auto mb-6 sm:mb-8 w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-white/10 backdrop-blur-md p-2.5 sm:p-3 border border-white/20 shadow-2xl flex items-center justify-center relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-gold via-blue-light to-green rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500" />
             <Image
               src="/logo.png"
@@ -111,68 +59,68 @@ export default function Home() {
             />
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-gold text-xs font-semibold tracking-wider uppercase mb-6 shadow-inner">
-            <span className="w-1.5 h-1.5 rounded-full bg-green animate-ping" />
-            <span>Where Ideas Meet, Voices Rise</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-gold text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-5 sm:mb-6 shadow-inner max-w-[95%]">
+            <span className="w-1.5 h-1.5 rounded-full bg-green animate-ping flex-shrink-0" />
+            <span className="truncate">Where Ideas Meet, Voices Rise</span>
           </div>
 
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.08]">
+          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1] sm:leading-[1.08] break-words">
             Uttara Youth <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-gold via-gold-light to-amber-200 bg-clip-text text-transparent">
               Society
             </span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-muted-light max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+          <p className="text-base sm:text-xl md:text-2xl text-muted-light max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light px-2">
             Nurturing leadership, articulation, and intellectual vigor through parliamentary debate and cultural synthesis across Bangladesh.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
             <Link
               href="/debate-partnership"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold rounded-full shadow-lg shadow-gold/20 hover:scale-[1.02] active:scale-[0.98] transition-transform"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold text-sm sm:text-base rounded-full shadow-lg shadow-gold/20 hover:scale-[1.02] active:scale-[0.98] transition-transform text-center"
             >
               Explore Debate Championship 2026
             </Link>
             <Link
               href="#about"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 glass-card text-white font-medium rounded-full hover:bg-white/15 transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 glass-card text-white font-medium text-sm sm:text-base rounded-full hover:bg-white/15 transition-all text-center"
             >
               Learn More
             </Link>
           </div>
 
           {/* Quick Metrics Bar from HTML style */}
-          <div className="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-            <div className="p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-2xl md:text-3xl font-display font-bold text-white mb-1">
+          <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-left">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
+              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white mb-0.5 sm:mb-1">
                 32+
               </div>
-              <div className="text-xs text-muted-light uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
                 Debate Teams
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-2xl md:text-3xl font-display font-bold text-blue-light mb-1">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
+              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-blue-light mb-0.5 sm:mb-1">
                 2,000+
               </div>
-              <div className="text-xs text-muted-light uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
                 Live Attendees
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-2xl md:text-3xl font-display font-bold text-green mb-1">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
+              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-green mb-0.5 sm:mb-1">
                 2 Divisions
               </div>
-              <div className="text-xs text-muted-light uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
                 Junior &amp; Senior
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-2xl md:text-3xl font-display font-bold text-gold mb-1">
+            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
+              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gold mb-0.5 sm:mb-1">
                 16 Dec
               </div>
-              <div className="text-xs text-muted-light uppercase tracking-wider font-semibold">
+              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
                 Grand Finale
               </div>
             </div>
@@ -181,58 +129,58 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="px-6 py-24 bg-white relative">
+      <section id="about" className="px-4 sm:px-6 py-16 sm:py-24 bg-white relative">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Who We Are
             </span>
-            <h2 className="font-display text-3xl md:text-5xl text-navy">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy">
               Fostering Discourse in Bangladesh
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
           </div>
 
-          <p className="text-muted text-lg md:text-xl leading-relaxed text-center mb-16 max-w-3xl mx-auto">
+          <p className="text-muted text-base sm:text-lg md:text-xl leading-relaxed text-center mb-12 sm:mb-16 max-w-3xl mx-auto px-2">
             Uttara Youth Society is a premier platform dedicated to nurturing articulation, critical reasoning, and youth civic engagement. Through our competitive debate leagues, educational symposiums, and cultural festivals, we shape a vibrant community of tomorrow&apos;s changemakers.
           </p>
 
-          <div id="pillars" className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
-              <div className="w-1.5 h-12 bg-red rounded-full absolute left-0 top-8" />
-              <div className="w-14 h-14 bg-red/10 rounded-2xl flex items-center justify-center mb-6 text-red text-2xl group-hover:scale-110 transition-transform">
+          <div id="pillars" className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+              <div className="w-1.5 h-12 bg-red rounded-full absolute left-0 top-6 sm:top-8" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red/10 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 text-red text-2xl group-hover:scale-110 transition-transform">
                 💬
               </div>
-              <h3 className="font-display text-2xl text-navy mb-3 font-bold">
+              <h3 className="font-display text-xl sm:text-2xl text-navy mb-2 sm:mb-3 font-bold">
                 Competitive Debate
               </h3>
-              <p className="text-muted text-sm leading-relaxed">
+              <p className="text-muted text-xs sm:text-sm leading-relaxed">
                 Mastering the Bengali Asian Parliamentary Debate format. Challenging the status quo on governance, ethics, technology, and culture.
               </p>
             </div>
 
-            <div className="p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
-              <div className="w-1.5 h-12 bg-blue-light rounded-full absolute left-0 top-8" />
-              <div className="w-14 h-14 bg-blue-light/10 rounded-2xl flex items-center justify-center mb-6 text-blue-light text-2xl group-hover:scale-110 transition-transform">
+            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+              <div className="w-1.5 h-12 bg-blue-light rounded-full absolute left-0 top-6 sm:top-8" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-light/10 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 text-blue-light text-2xl group-hover:scale-110 transition-transform">
                 🎓
               </div>
-              <h3 className="font-display text-2xl text-navy mb-3 font-bold">
+              <h3 className="font-display text-xl sm:text-2xl text-navy mb-2 sm:mb-3 font-bold">
                 Youth Academics
               </h3>
-              <p className="text-muted text-sm leading-relaxed">
+              <p className="text-muted text-xs sm:text-sm leading-relaxed">
                 Workshops on rhetoric, public adjudication, research methodologies, and policy design led by seasoned national debaters.
               </p>
             </div>
 
-            <div className="p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
-              <div className="w-1.5 h-12 bg-green rounded-full absolute left-0 top-8" />
-              <div className="w-14 h-14 bg-green/10 rounded-2xl flex items-center justify-center mb-6 text-green text-2xl group-hover:scale-110 transition-transform">
+            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group sm:col-span-2 md:col-span-1">
+              <div className="w-1.5 h-12 bg-green rounded-full absolute left-0 top-6 sm:top-8" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-green/10 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 text-green text-2xl group-hover:scale-110 transition-transform">
                 🤝
               </div>
-              <h3 className="font-display text-2xl text-navy mb-3 font-bold">
+              <h3 className="font-display text-xl sm:text-2xl text-navy mb-2 sm:mb-3 font-bold">
                 Leadership Network
               </h3>
-              <p className="text-muted text-sm leading-relaxed">
+              <p className="text-muted text-xs sm:text-sm leading-relaxed">
                 Uniting bright minds across schools, colleges, and universities in Uttara and greater Dhaka into a lasting fellowship.
               </p>
             </div>
@@ -241,32 +189,32 @@ export default function Home() {
       </section>
 
       {/* Dual Impact Section: Intellect by Day, Culture by Night */}
-      <section id="impact" className="px-6 py-20 bg-off-white border-y border-navy/5">
+      <section id="impact" className="px-4 sm:px-6 py-16 sm:py-20 bg-off-white border-y border-navy/5">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Dual-Audience Synergy
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-navy">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
               Intellect by Day, Culture by Night
             </h2>
-            <p className="text-muted text-sm md:text-base mt-2 max-w-2xl mx-auto">
+            <p className="text-muted text-xs sm:text-sm md:text-base mt-2 max-w-2xl mx-auto px-2">
               Our flagship model delivers two distinct opportunities in one landmark event.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-navy/5 relative overflow-hidden">
-              <div className="w-10 h-10 rounded-xl bg-blue/10 text-blue font-bold flex items-center justify-center mb-4">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="p-6 sm:p-8 bg-white rounded-3xl shadow-sm border border-navy/5 relative overflow-hidden">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue/10 text-blue font-bold flex items-center justify-center mb-4 text-sm sm:text-base">
                 01
               </div>
-              <span className="text-xs font-bold text-blue tracking-wider uppercase mb-1 block">
+              <span className="text-[11px] sm:text-xs font-bold text-blue tracking-wider uppercase mb-1 block">
                 Part A · Daytime Programme
               </span>
-              <h3 className="font-display text-2xl font-bold text-navy mb-3">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-navy mb-2 sm:mb-3">
                 Debate Championship &amp; Prize-Giving
               </h3>
-              <p className="text-muted text-sm leading-relaxed mb-6">
+              <p className="text-muted text-xs sm:text-sm leading-relaxed mb-6">
                 Connect directly with serious academic talent, dedicated faculty, principals, coaches, and passionate youth leaders engaged in intense civic dialogue.
               </p>
               <ul className="space-y-2 text-xs text-muted font-medium">
@@ -282,17 +230,17 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="p-8 bg-navy text-white rounded-3xl shadow-xl relative overflow-hidden">
-              <div className="w-10 h-10 rounded-xl bg-gold/20 text-gold font-bold flex items-center justify-center mb-4">
+            <div className="p-6 sm:p-8 bg-navy text-white rounded-3xl shadow-xl relative overflow-hidden">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gold/20 text-gold font-bold flex items-center justify-center mb-4 text-sm sm:text-base">
                 02
               </div>
-              <span className="text-xs font-bold text-gold tracking-wider uppercase mb-1 block">
+              <span className="text-[11px] sm:text-xs font-bold text-gold tracking-wider uppercase mb-1 block">
                 Part B · Evening Programme
               </span>
-              <h3 className="font-display text-2xl font-bold text-white mb-3">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
                 Live Music Festival
               </h3>
-              <p className="text-muted-light text-sm leading-relaxed mb-6">
+              <p className="text-muted-light text-xs sm:text-sm leading-relaxed mb-6">
                 A high-energy cultural evening drawing an audience of 2,000+ youth, students, and community families celebrating Victory Day together.
               </p>
               <ul className="space-y-2 text-xs text-muted-light font-medium">
@@ -312,22 +260,22 @@ export default function Home() {
       </section>
 
       {/* Featured Banner for Championship */}
-      <section className="px-6 py-16 bg-navy text-white relative overflow-hidden">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+      <section className="px-4 sm:px-6 py-14 sm:py-16 bg-navy text-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 relative z-10 text-center md:text-left">
           <div>
             <div className="inline-block px-3 py-1 rounded-full bg-gold/20 text-gold text-xs font-bold uppercase tracking-wider mb-3">
               Upcoming Flagship Event
             </div>
-            <h3 className="font-display text-3xl md:text-4xl font-bold mb-2">
+            <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
               Uttara Debate Championship <span className="text-gold">2026</span>
             </h3>
-            <p className="text-muted-light text-base max-w-xl">
+            <p className="text-muted-light text-sm sm:text-base max-w-xl mx-auto md:mx-0">
               Complete proposal with 7 sponsorship tiers, tournament structure, transparent budget breakdown, and competition integrity code.
             </p>
           </div>
           <Link
             href="/debate-partnership"
-            className="flex-shrink-0 px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold rounded-full hover:scale-105 transition-transform shadow-lg shadow-gold/20"
+            className="w-full sm:w-auto flex-shrink-0 px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold rounded-full hover:scale-105 transition-transform shadow-lg shadow-gold/20 text-center text-sm sm:text-base"
           >
             View Complete Proposal →
           </Link>
@@ -342,7 +290,7 @@ export default function Home() {
           <span style={{ backgroundColor: "#5BC22B" }}></span>
           <span style={{ backgroundColor: "#FFB414" }}></span>
         </div>
-        <div className="px-6 py-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div className="px-6 py-10 sm:py-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div className="flex items-center gap-3">
             <Image
               src="/logo.png"
@@ -352,7 +300,7 @@ export default function Home() {
               className="object-contain"
             />
             <div>
-              <div className="font-display font-bold text-lg text-white">
+              <div className="font-display font-bold text-base sm:text-lg text-white">
                 Uttara Youth Society
               </div>
               <p className="text-xs text-muted-light">

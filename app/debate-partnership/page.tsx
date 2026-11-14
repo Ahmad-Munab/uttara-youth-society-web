@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
 
 export default function DebatePartnership() {
   const packages = [
@@ -105,7 +106,7 @@ export default function DebatePartnership() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-off-white selection:bg-gold/20 selection:text-navy">
+    <div className="min-h-screen flex flex-col bg-off-white selection:bg-gold/20 selection:text-navy overflow-x-hidden">
       {/* 4-Color Accent Strip from Demo */}
       <div className="accent-bar sticky top-0 z-50">
         <span style={{ backgroundColor: "#E8222E" }}></span>
@@ -114,47 +115,15 @@ export default function DebatePartnership() {
         <span style={{ backgroundColor: "#FFB414" }}></span>
       </div>
 
-      {/* Navigation with Actual Logo */}
-      <nav className="w-full px-6 py-3.5 flex items-center justify-between border-b border-navy/10 bg-white/85 backdrop-blur-md sticky top-[4px] z-40">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9 rounded-xl overflow-hidden shadow-sm border border-navy/10 bg-white p-0.5 group-hover:scale-105 transition-transform">
-            <Image
-              src="/logo.png"
-              alt="Uttara Youth Society"
-              width={36}
-              height={36}
-              className="object-contain w-full h-full"
-            />
-          </div>
-          <div className="leading-tight">
-            <span className="font-display font-bold text-lg text-navy group-hover:text-gold transition-colors block">
-              Uttara Youth Society
-            </span>
-            <span className="text-[11px] text-muted block -mt-0.5">Debate Club · Sponsorship 2026</span>
-          </div>
-        </Link>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/"
-            className="text-xs sm:text-sm font-semibold text-muted hover:text-navy transition-colors px-3 py-1.5 rounded-full hover:bg-navy/5"
-          >
-            ← Back to Home
-          </Link>
-          <a
-            href="mailto:contact@uttarayouthsociety.org?subject=Sponsorship%20Inquiry%20-%20Uttara%20Debate%20Championship%202026"
-            className="inline-flex items-center px-4 py-2 bg-navy text-white text-xs font-bold rounded-full hover:bg-navy-light transition-colors shadow-sm"
-          >
-            Contact Secretariat
-          </a>
-        </div>
-      </nav>
+      {/* Responsive Navigation with Actual Logo & Mobile Drawer */}
+      <Navbar currentPage="proposal" />
 
       {/* Hero Section: Replicating Cover Page from HTML Asset */}
-      <section className="relative overflow-hidden bg-navy text-white px-6 py-20 md:py-32">
-        {/* Floating gradient orbs (.orb o1, o2, o3) */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[360px] bg-gradient-to-tr from-blue/20 via-gold/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
-        <div className="absolute top-10 left-10 w-72 h-72 bg-blue-light/10 rounded-full blur-2xl pointer-events-none animate-float-slow" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-gold/15 rounded-full blur-2xl pointer-events-none animate-float-slower" />
+      <section className="relative overflow-hidden bg-navy text-white px-4 sm:px-6 py-16 sm:py-24 md:py-32">
+        {/* Floating gradient orbs */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[340px] sm:w-[650px] h-[220px] sm:h-[360px] bg-gradient-to-tr from-blue/20 via-gold/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
+        <div className="absolute top-10 left-5 w-48 sm:w-72 h-48 sm:h-72 bg-blue-light/10 rounded-full blur-2xl pointer-events-none animate-float-slow" />
+        <div className="absolute bottom-10 right-5 w-52 sm:w-80 h-52 sm:h-80 bg-gold/15 rounded-full blur-2xl pointer-events-none animate-float-slower" />
 
         {/* Decorative SVG Cover Art from HTML demo */}
         <svg
@@ -194,7 +163,7 @@ export default function DebatePartnership() {
 
         <div className="relative max-w-4xl mx-auto text-center z-10">
           {/* Official logo emblem */}
-          <div className="mx-auto mb-6 w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/10 backdrop-blur-md p-2.5 border border-white/20 shadow-2xl flex items-center justify-center">
+          <div className="mx-auto mb-5 sm:mb-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl bg-white/10 backdrop-blur-md p-2 sm:p-2.5 border border-white/20 shadow-2xl flex items-center justify-center">
             <Image
               src="/logo.png"
               alt="Uttara Youth Society"
@@ -205,8 +174,8 @@ export default function DebatePartnership() {
             />
           </div>
 
-          <div className="flex items-center justify-between text-xs text-muted-light border-b border-white/10 pb-3 mb-6 max-w-xl mx-auto">
-            <span className="font-semibold text-white/90 tracking-wide">
+          <div className="flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-muted-light border-b border-white/10 pb-3 mb-5 sm:mb-6 max-w-xl mx-auto gap-1 sm:gap-0">
+            <span className="font-semibold text-white/90 tracking-wide text-center sm:text-left">
               Uttara Youth Society – Debate Club
             </span>
             <span className="text-gold font-bold tracking-wider uppercase">
@@ -214,33 +183,33 @@ export default function DebatePartnership() {
             </span>
           </div>
 
-          <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-gold text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
+          <div className="inline-block px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-gold text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 shadow-sm">
             Corporate Sponsorship Proposal 2026
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight">
+          <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 leading-tight break-words">
             Uttara Debate <br />
             Championship <span className="text-gold">2026</span>
           </h1>
 
-          <p className="font-display text-2xl md:text-3xl text-gold-light mb-4 italic font-normal tracking-wide">
+          <p className="font-display text-xl sm:text-2xl md:text-3xl text-gold-light mb-3 sm:mb-4 italic font-normal tracking-wide">
             Grand Finale &amp; Music Festival
           </p>
 
-          <p className="text-muted-light text-lg md:text-xl mb-10 font-light">
+          <p className="text-muted-light text-base sm:text-lg md:text-xl mb-8 sm:mb-10 font-light px-2">
             Where Ideas Meet, Voices Rise.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 text-sm font-medium">
-            <div className="px-5 py-3 glass-card flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-medium">
+            <div className="px-4 py-2.5 sm:px-5 sm:py-3 glass-card flex items-center justify-center gap-2">
               <span className="text-gold font-bold">📅 16 December 2026</span>
               <span className="text-muted-light">· Uttara, Dhaka</span>
             </div>
-            <div className="px-5 py-3 glass-card flex items-center gap-2">
+            <div className="px-4 py-2.5 sm:px-5 sm:py-3 glass-card flex items-center justify-center gap-2">
               <span className="text-blue-light font-bold">🗣 32+ Teams</span>
               <span className="text-muted-light">Junior &amp; Senior</span>
             </div>
-            <div className="px-5 py-3 glass-card flex items-center gap-2">
+            <div className="px-4 py-2.5 sm:px-5 sm:py-3 glass-card flex items-center justify-center gap-2">
               <span className="text-green font-bold">🎵 Live Concert</span>
               <span className="text-muted-light">Evening Festival</span>
             </div>
@@ -248,56 +217,56 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 1 & 2 from HTML: More Than A Debate / Intellect by Day, Culture by Night */}
-      <section className="px-6 py-20 bg-white">
+      {/* SECTION 1 & 2: More Than A Debate / Intellect by Day, Culture by Night */}
+      <section id="overview" className="px-4 sm:px-6 py-16 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Dual-Audience Vision
             </span>
-            <h2 className="font-display text-3xl md:text-5xl text-navy">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy">
               More Than A Debate: A Day of Ideas &amp; A Night of Music
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
-            <p className="text-muted text-base md:text-lg max-w-2xl mx-auto mt-4">
+            <p className="text-muted text-sm sm:text-base md:text-lg max-w-2xl mx-auto mt-4 px-2">
               A sponsorship reaches an educational audience and a cultural one, in a single day.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-off-white rounded-3xl border-l-[6px] border-blue shadow-sm">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border-l-[6px] border-blue shadow-sm">
               <div className="inline-block px-3 py-1 rounded-full bg-blue/10 text-blue font-bold text-xs uppercase mb-3">
                 Part A · Daytime Programme
               </div>
-              <h3 className="font-display text-2xl font-bold text-navy mb-2">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-navy mb-2">
                 Debate Championship &amp; Prize-Giving
               </h3>
               <p className="text-xs text-muted mb-4 font-semibold">
                 Until 5:30 PM · Educational &amp; Intellectual Engagement
               </p>
-              <p className="text-muted text-sm leading-relaxed mb-4">
+              <p className="text-muted text-xs sm:text-sm leading-relaxed mb-4">
                 Participating schools, colleges, and madrasas across Uttara and greater Dhaka. Students, teachers, and coaches deeply engaged with public policy and rhetoric.
               </p>
-              <div className="p-4 rounded-xl bg-white border border-navy/5 text-xs text-muted space-y-1.5">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-navy/5 text-xs text-muted space-y-1.5">
                 <div><strong>Brand Association:</strong> Critical thinking, educational leadership, and civic empowerment.</div>
                 <div><strong>Key Moments:</strong> Final debate on stage, trophy handover, VIP speeches.</div>
               </div>
             </div>
 
-            <div className="p-8 bg-off-white rounded-3xl border-l-[6px] border-gold shadow-sm">
+            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border-l-[6px] border-gold shadow-sm">
               <div className="inline-block px-3 py-1 rounded-full bg-gold/20 text-gold font-bold text-xs uppercase mb-3">
                 Part B · Evening Programme
               </div>
-              <h3 className="font-display text-2xl font-bold text-navy mb-2">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-navy mb-2">
                 Live Music Festival
               </h3>
               <p className="text-xs text-muted mb-4 font-semibold">
                 6:00 PM – 9:00 PM · Youth Entertainment &amp; Culture
               </p>
-              <p className="text-muted text-sm leading-relaxed mb-4">
+              <p className="text-muted text-xs sm:text-sm leading-relaxed mb-4">
                 An energized audience of 2,000+ local youth and students celebrating Victory Day with prominent music acts, immersive sound, and celebratory festival lights.
               </p>
-              <div className="p-4 rounded-xl bg-white border border-navy/5 text-xs text-muted space-y-1.5">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-navy/5 text-xs text-muted space-y-1.5">
                 <div><strong>Brand Association:</strong> Youth culture, vibrant lifestyle, celebration, and energy.</div>
                 <div><strong>Key Moments:</strong> Headline artist performances, LED loop, activation booths.</div>
               </div>
@@ -306,35 +275,35 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 3 & 4 from HTML: Competition Structure & Scalable Knockout */}
-      <section className="px-6 py-20 bg-off-white">
+      {/* SECTION 3 & 4: Competition Structure & Scalable Knockout */}
+      <section id="structure" className="px-4 sm:px-6 py-16 sm:py-20 bg-off-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Tournament System
             </span>
-            <h2 className="font-display text-3xl md:text-5xl text-navy">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy">
               Two Sections, One Championship
             </h2>
-            <p className="text-muted text-base max-w-2xl mx-auto mt-3">
+            <p className="text-muted text-sm sm:text-base max-w-2xl mx-auto mt-3 px-2">
               Each section runs its own single-elimination bracket, sized to however many teams register.
             </p>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
             {/* Junior Section */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-navy/5 relative overflow-hidden">
-              <div className="w-12 h-12 rounded-2xl bg-red/10 text-red font-bold text-xl flex items-center justify-center mb-4">
+            <div className="p-6 sm:p-8 bg-white rounded-3xl shadow-sm border border-navy/5 relative overflow-hidden">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-red/10 text-red font-bold text-lg sm:text-xl flex items-center justify-center mb-4">
                 JR
               </div>
-              <h3 className="font-display text-2xl font-bold text-navy mb-1">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-navy mb-1">
                 Junior Section
               </h3>
-              <div className="text-xs font-bold text-muted uppercase tracking-wider mb-4">
+              <div className="text-[11px] sm:text-xs font-bold text-muted uppercase tracking-wider mb-4">
                 Classes 8 · 9 · 10 (School Division)
               </div>
-              <ul className="space-y-2.5 text-sm text-muted">
+              <ul className="space-y-2.5 text-xs sm:text-sm text-muted">
                 <li className="flex items-start gap-2">
                   <span className="text-red font-bold">✔</span> Independent tournament bracket
                 </li>
@@ -351,17 +320,17 @@ export default function DebatePartnership() {
             </div>
 
             {/* Senior Section */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-navy/5 relative overflow-hidden">
-              <div className="w-12 h-12 rounded-2xl bg-blue/10 text-blue font-bold text-xl flex items-center justify-center mb-4">
+            <div className="p-6 sm:p-8 bg-white rounded-3xl shadow-sm border border-navy/5 relative overflow-hidden">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-blue/10 text-blue font-bold text-lg sm:text-xl flex items-center justify-center mb-4">
                 SR
               </div>
-              <h3 className="font-display text-2xl font-bold text-navy mb-1">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-navy mb-1">
                 Senior Section
               </h3>
-              <div className="text-xs font-bold text-muted uppercase tracking-wider mb-4">
+              <div className="text-[11px] sm:text-xs font-bold text-muted uppercase tracking-wider mb-4">
                 Classes 11 · 12 (College &amp; Higher Secondary)
               </div>
-              <ul className="space-y-2.5 text-sm text-muted">
+              <ul className="space-y-2.5 text-xs sm:text-sm text-muted">
                 <li className="flex items-start gap-2">
                   <span className="text-blue font-bold">✔</span> Independent college tournament bracket
                 </li>
@@ -380,13 +349,13 @@ export default function DebatePartnership() {
 
           {/* Scalable Knockout Progression Diagram */}
           <div className="p-6 md:p-8 bg-navy text-white rounded-3xl shadow-xl">
-            <h4 className="font-display text-xl font-bold mb-2 text-gold">
+            <h4 className="font-display text-lg sm:text-xl font-bold mb-2 text-gold">
               Knockout Progression Architecture
             </h4>
             <p className="text-xs text-muted-light mb-6">
               A single-elimination tournament structure ensuring merit-based advancement.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-3 text-center text-xs">
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                 <div className="font-bold text-white mb-0.5">Prelims</div>
                 <div className="text-[10px] text-muted-light">If needed</div>
@@ -403,7 +372,7 @@ export default function DebatePartnership() {
                 <div className="font-bold text-white mb-0.5">Semi-Finals</div>
                 <div className="text-[10px] text-muted-light">Top 4 Teams</div>
               </div>
-              <div className="p-3 rounded-xl bg-gold/20 border border-gold text-gold font-bold col-span-2 md:col-span-1">
+              <div className="p-3 rounded-xl bg-gold/20 border border-gold text-gold font-bold col-span-2 sm:col-span-1">
                 <div>Grand Final</div>
                 <div className="text-[10px] text-gold-light">16 Dec Stage</div>
               </div>
@@ -412,14 +381,14 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 5 from HTML: Event Calendar (Three days. One grand finale.) */}
-      <section className="px-6 py-20 bg-white">
+      {/* SECTION 5: Event Calendar (Three days. One grand finale.) */}
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Event Calendar
             </span>
-            <h2 className="font-display text-3xl md:text-5xl text-navy">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy">
               Three Days. One Grand Finale.
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
@@ -465,22 +434,22 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 7 from HTML: Where Your Brand Shows Up */}
-      <section className="px-6 py-20 bg-off-white border-y border-navy/5">
+      {/* SECTION 7: Where Your Brand Shows Up */}
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-off-white border-y border-navy/5">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Multi-Channel Placement
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-navy">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
               Where Your Brand Shows Up
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-navy/5">
-              <h3 className="font-display text-xl font-bold text-navy mb-4 flex items-center gap-2">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="p-6 sm:p-8 bg-white rounded-3xl shadow-sm border border-navy/5">
+              <h3 className="font-display text-lg sm:text-xl font-bold text-navy mb-4 flex items-center gap-2">
                 <span className="text-red">●</span> Part A · Daytime Debate Stage
               </h3>
               <ul className="space-y-3 text-xs md:text-sm text-muted">
@@ -491,8 +460,8 @@ export default function DebatePartnership() {
               </ul>
             </div>
 
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-navy/5">
-              <h3 className="font-display text-xl font-bold text-navy mb-4 flex items-center gap-2">
+            <div className="p-6 sm:p-8 bg-white rounded-3xl shadow-sm border border-navy/5">
+              <h3 className="font-display text-lg sm:text-xl font-bold text-navy mb-4 flex items-center gap-2">
                 <span className="text-gold">●</span> Part B · Evening Music Festival Stage
               </h3>
               <ul className="space-y-3 text-xs md:text-sm text-muted">
@@ -506,17 +475,17 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 8 from HTML: All Seven Ways to Partner */}
-      <section className="px-6 py-24 bg-white">
+      {/* SECTION 8: All Seven Ways to Partner */}
+      <section id="packages" className="px-4 sm:px-6 py-16 sm:py-24 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Seven Ways to Partner
             </span>
-            <h2 className="font-display text-3xl md:text-5xl text-navy">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy">
               Sponsorship Packages
             </h2>
-            <p className="text-muted text-base md:text-lg max-w-2xl mx-auto mt-4">
+            <p className="text-muted text-sm sm:text-base md:text-lg max-w-2xl mx-auto mt-4 px-2">
               All 7 tiers calibrated to carry visibility across both the debate championship and live music festival.
             </p>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
@@ -526,7 +495,7 @@ export default function DebatePartnership() {
             {packages.map((pkg, i) => (
               <div
                 key={i}
-                className={`p-7 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:shadow-xl ${
+                className={`p-6 sm:p-7 rounded-3xl flex flex-col justify-between transition-all duration-300 hover:shadow-xl ${
                   pkg.name === "Title Sponsor"
                     ? "bg-navy text-white lg:col-span-2 border-2 border-gold shadow-2xl relative"
                     : pkg.name === "Music Festival Partner"
@@ -539,7 +508,7 @@ export default function DebatePartnership() {
                     <span className="text-xs font-bold uppercase tracking-wider text-gold">
                       {pkg.status}
                     </span>
-                    <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold ${
+                    <span className={`text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full font-bold ${
                       pkg.name === "Title Sponsor" || pkg.name === "Music Festival Partner"
                         ? "bg-white/10 text-white"
                         : "bg-navy/5 text-navy"
@@ -548,7 +517,7 @@ export default function DebatePartnership() {
                     </span>
                   </div>
 
-                  <h3 className={`font-display text-2xl font-bold mb-1 ${
+                  <h3 className={`font-display text-xl sm:text-2xl font-bold mb-1 ${
                     pkg.name === "Title Sponsor" || pkg.name === "Music Festival Partner"
                       ? "text-white"
                       : "text-navy"
@@ -556,7 +525,7 @@ export default function DebatePartnership() {
                     {pkg.name}
                   </h3>
 
-                  <div className={`font-display text-3xl font-extrabold mb-4 ${
+                  <div className={`font-display text-2xl sm:text-3xl font-extrabold mb-4 ${
                     pkg.name === "Title Sponsor" ? "text-gold" : ""
                   }`}>
                     {pkg.price}
@@ -606,21 +575,24 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 10 from HTML: Benefits Comparison Matrix */}
-      <section className="px-6 py-20 bg-off-white border-t border-navy/5">
+      {/* SECTION 10: Benefits Comparison Matrix (with Mobile Horizontal Scroll hint) */}
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-off-white border-t border-navy/5">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Compare Packages
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-navy">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
               Benefits at a Glance
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
+            <p className="text-xs text-muted mt-3 md:hidden">
+              ← Scroll horizontally to view all columns →
+            </p>
           </div>
 
-          <div className="overflow-x-auto bg-white rounded-3xl p-6 shadow-sm border border-navy/5">
-            <table className="w-full text-left text-xs md:text-sm">
+          <div className="overflow-x-auto bg-white rounded-3xl p-4 sm:p-6 shadow-sm border border-navy/5">
+            <table className="w-full text-left text-xs md:text-sm min-w-[620px]">
               <thead>
                 <tr className="border-b border-navy/10 text-navy font-bold">
                   <th className="py-3 px-3">Package</th>
@@ -702,67 +674,67 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 11 from HTML: Event Budget (Where ৳10,00,000 goes) */}
-      <section className="px-6 py-20 bg-white">
+      {/* SECTION 11: Event Budget (Where ৳10,00,000 goes) */}
+      <section id="budget" className="px-4 sm:px-6 py-16 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Fiscal Transparency
             </span>
-            <h2 className="font-display text-3xl md:text-5xl text-navy">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy">
               Where ৳10,00,000 Goes
             </h2>
-            <p className="text-muted text-base max-w-2xl mx-auto mt-3">
+            <p className="text-muted text-sm sm:text-base max-w-2xl mx-auto mt-3 px-2">
               A comprehensive budget covering complete tournament logistics and live music festival production.
             </p>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-4 gap-4 mb-8">
-            <div className="p-6 rounded-2xl bg-off-white border border-navy/5">
-              <div className="text-2xl font-bold text-navy mb-1">20%</div>
-              <div className="text-xs font-bold text-gold uppercase tracking-wider mb-2">৳2,00,000</div>
-              <div className="text-sm font-semibold text-navy">Debate Operations</div>
-              <div className="text-xs text-muted mt-1">Awards, adjudicators, tabulations, &amp; rulebooks</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
+            <div className="p-4 sm:p-6 rounded-2xl bg-off-white border border-navy/5">
+              <div className="text-xl sm:text-2xl font-bold text-navy mb-1">20%</div>
+              <div className="text-[11px] sm:text-xs font-bold text-gold uppercase tracking-wider mb-2">৳2,00,000</div>
+              <div className="text-xs sm:text-sm font-semibold text-navy">Debate Operations</div>
+              <div className="text-[10px] sm:text-xs text-muted mt-1">Awards, adjudicators &amp; tabs</div>
             </div>
-            <div className="p-6 rounded-2xl bg-off-white border border-navy/5">
-              <div className="text-2xl font-bold text-navy mb-1">20%</div>
-              <div className="text-xs font-bold text-blue-light uppercase tracking-wider mb-2">৳2,00,000</div>
-              <div className="text-sm font-semibold text-navy">Music Festival</div>
-              <div className="text-xs text-muted mt-1">Artist honorariums, band management &amp; sound rider</div>
+            <div className="p-4 sm:p-6 rounded-2xl bg-off-white border border-navy/5">
+              <div className="text-xl sm:text-2xl font-bold text-navy mb-1">20%</div>
+              <div className="text-[11px] sm:text-xs font-bold text-blue-light uppercase tracking-wider mb-2">৳2,00,000</div>
+              <div className="text-xs sm:text-sm font-semibold text-navy">Music Festival</div>
+              <div className="text-[10px] sm:text-xs text-muted mt-1">Artist honorariums &amp; rider</div>
             </div>
-            <div className="p-6 rounded-2xl bg-off-white border border-navy/5">
-              <div className="text-2xl font-bold text-navy mb-1">38%</div>
-              <div className="text-xs font-bold text-green uppercase tracking-wider mb-2">৳3,80,000</div>
-              <div className="text-sm font-semibold text-navy">Shared Production</div>
-              <div className="text-xs text-muted mt-1">Venue, main stage, LED screens, concert audio &amp; lighting</div>
+            <div className="p-4 sm:p-6 rounded-2xl bg-off-white border border-navy/5">
+              <div className="text-xl sm:text-2xl font-bold text-navy mb-1">38%</div>
+              <div className="text-[11px] sm:text-xs font-bold text-green uppercase tracking-wider mb-2">৳3,80,000</div>
+              <div className="text-xs sm:text-sm font-semibold text-navy">Shared Production</div>
+              <div className="text-[10px] sm:text-xs text-muted mt-1">Venue, LED, sound &amp; lighting</div>
             </div>
-            <div className="p-6 rounded-2xl bg-off-white border border-navy/5">
-              <div className="text-2xl font-bold text-navy mb-1">22%</div>
-              <div className="text-xs font-bold text-red uppercase tracking-wider mb-2">৳2,20,000</div>
-              <div className="text-sm font-semibold text-navy">Hospitality &amp; Safety</div>
-              <div className="text-xs text-muted mt-1">Participant catering, security, medical, and contingency</div>
+            <div className="p-4 sm:p-6 rounded-2xl bg-off-white border border-navy/5">
+              <div className="text-xl sm:text-2xl font-bold text-navy mb-1">22%</div>
+              <div className="text-[11px] sm:text-xs font-bold text-red uppercase tracking-wider mb-2">৳2,20,000</div>
+              <div className="text-xs sm:text-sm font-semibold text-navy">Hospitality &amp; Safety</div>
+              <div className="text-[10px] sm:text-xs text-muted mt-1">Catering, security, contingency</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 12 from HTML: Integrity & Accountability */}
-      <section className="px-6 py-20 bg-off-white border-t border-navy/5">
+      {/* SECTION 12: Integrity & Accountability */}
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-off-white border-t border-navy/5">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Governance Standards
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-navy">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
               Fair on Stage. Transparent Off It.
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-3xl bg-white border border-navy/5 shadow-sm">
-              <h3 className="font-display text-lg font-bold text-navy mb-3">
+              <h3 className="font-display text-base sm:text-lg font-bold text-navy mb-3">
                 Competition Integrity
               </h3>
               <ul className="space-y-2 text-xs text-muted leading-relaxed">
@@ -774,7 +746,7 @@ export default function DebatePartnership() {
             </div>
 
             <div className="p-6 rounded-3xl bg-white border border-navy/5 shadow-sm">
-              <h3 className="font-display text-lg font-bold text-navy mb-3">
+              <h3 className="font-display text-base sm:text-lg font-bold text-navy mb-3">
                 Sponsor Accountability
               </h3>
               <ul className="space-y-2 text-xs text-muted leading-relaxed">
@@ -785,8 +757,8 @@ export default function DebatePartnership() {
               </ul>
             </div>
 
-            <div className="p-6 rounded-3xl bg-white border border-navy/5 shadow-sm">
-              <h3 className="font-display text-lg font-bold text-navy mb-3">
+            <div className="p-6 rounded-3xl bg-white border border-navy/5 shadow-sm sm:col-span-2 md:col-span-1">
+              <h3 className="font-display text-base sm:text-lg font-bold text-navy mb-3">
                 Safety &amp; Discipline
               </h3>
               <ul className="space-y-2 text-xs text-muted leading-relaxed">
@@ -800,20 +772,20 @@ export default function DebatePartnership() {
         </div>
       </section>
 
-      {/* SECTION 13 from HTML: Road to the Finale Timeline */}
-      <section className="px-6 py-20 bg-white">
+      {/* SECTION 13: Road to the Finale Timeline */}
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
               Roadmap
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-navy">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
               Timeline &amp; How to Partner
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-red via-blue to-green mx-auto mt-4 rounded-full" />
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {[
               { date: "Early Nov", desc: "Event plan, committees, and sponsorship proposal finalised" },
               { date: "09–15 Nov", desc: "Corporate and institutional sponsor outreach" },
@@ -823,8 +795,8 @@ export default function DebatePartnership() {
               { date: "12–13 Dec", desc: "Days 1 & 2 indoor knockout rounds for Junior & Senior sections" },
               { date: "16 Dec", desc: "Grand Finale debates, prize-giving, and live music festival" }
             ].map((step, idx) => (
-              <div key={idx} className="flex items-center gap-4 p-4 rounded-2xl bg-off-white border border-navy/5">
-                <div className="w-24 flex-shrink-0 font-display font-bold text-navy text-sm">
+              <div key={idx} className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-off-white border border-navy/5">
+                <div className="w-20 sm:w-24 flex-shrink-0 font-display font-bold text-navy text-xs sm:text-sm">
                   {step.date}
                 </div>
                 <div className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
@@ -838,31 +810,31 @@ export default function DebatePartnership() {
       </section>
 
       {/* Call to Action Section with Demo Atmospheric Dark Palette */}
-      <section className="relative px-6 py-24 bg-gradient-to-br from-navy via-navy to-navy-light text-white overflow-hidden text-center">
+      <section className="relative px-4 sm:px-6 py-16 sm:py-24 bg-gradient-to-br from-navy via-navy to-navy-light text-white overflow-hidden text-center">
         <div className="absolute inset-0 pointer-events-none opacity-20">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-red via-blue-light to-gold rounded-full blur-3xl animate-pulse-glow" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[600px] h-[200px] sm:h-[300px] bg-gradient-to-r from-red via-blue-light to-gold rounded-full blur-3xl animate-pulse-glow" />
         </div>
 
         <div className="relative max-w-3xl mx-auto z-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-gold bg-white/10 px-3.5 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gold bg-white/10 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full inline-block mb-4">
             Empower Tomorrow&apos;s Leaders
           </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold mb-6">
+          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             Partner With Uttara Debate Championship 2026
           </h2>
-          <p className="text-lg md:text-xl text-muted-light mb-10 font-light leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-xl text-muted-light mb-8 sm:mb-10 font-light leading-relaxed px-2">
             Custom deliverables, category exclusivity, and CSR alignments can be discussed directly with our Secretariat.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
             <a
               href="mailto:contact@uttarayouthsociety.org?subject=Corporate%20Partnership%20Inquiry%20-%20Uttara%20Debate%20Championship%202026"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold rounded-full hover:scale-105 transition-transform shadow-lg shadow-gold/25"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold rounded-full hover:scale-105 transition-transform shadow-lg shadow-gold/25 text-sm sm:text-base text-center"
             >
               Email Sponsorship Team
             </a>
             <Link
               href="/"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 glass-card text-white font-semibold rounded-full hover:bg-white/15 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 glass-card text-white font-semibold rounded-full hover:bg-white/15 transition-colors text-sm sm:text-base text-center"
             >
               Back to Homepage
             </Link>
@@ -878,7 +850,7 @@ export default function DebatePartnership() {
           <span style={{ backgroundColor: "#5BC22B" }}></span>
           <span style={{ backgroundColor: "#FFB414" }}></span>
         </div>
-        <div className="px-6 py-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div className="px-6 py-10 sm:py-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div className="flex items-center gap-3">
             <Image
               src="/logo.png"
@@ -888,7 +860,7 @@ export default function DebatePartnership() {
               className="object-contain"
             />
             <div>
-              <div className="font-display font-bold text-lg text-white">
+              <div className="font-display font-bold text-base sm:text-lg text-white">
                 Uttara Youth Society – Debate Club
               </div>
               <p className="text-xs text-muted-light">
