@@ -1,149 +1,109 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #101B35;
-  --navy-light: #1B2D63;
-  --gold: #D6AD60;
-  --gold-light: #E8C479;
-  --blue: #315CFF;
-  --blue-light: #14A9F0;
-  --off-white: #F7F7F2;
-  --ink: #1B2440;
-  --muted: #5E6784;
-  --muted-light: #B8C4EC;
-  --red: #E8222E;
-  --green: #5BC22B;
-  --yellow: #FFB414;
-  --purple: #8B5CF6;
+  --color-paper: #F8FAFD;
+  --color-white: #FFFFFF;
+  --color-navy: #071B3A;
+  --color-navy-dark: #040F22;
+  --color-red: #E31C2A;
+  --color-red-hover: #C71420;
+  --color-yellow: #FFC400;
+  --color-tint: #E8EEF8;
+  --color-line: #D6DDEA;
 }
 
 @theme inline {
-  --font-display: var(--font-playfair);
-  --font-body: var(--font-body);
-  --font-sans: var(--font-body);
-  --color-navy: var(--navy);
-  --color-navy-light: var(--navy-light);
-  --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-blue: var(--blue);
-  --color-blue-light: var(--blue-light);
-  --color-off-white: var(--off-white);
-  --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-muted-light: var(--muted-light);
-  --color-red: var(--red);
-  --color-green: var(--green);
-  --color-yellow: var(--yellow);
-  --color-purple: var(--purple);
+  --font-heading: var(--font-heading), 'Bricolage Grotesque', sans-serif;
+  --font-body: var(--font-body), 'Hind Siliguri', sans-serif;
+  --font-sans: var(--font-body), 'Hind Siliguri', sans-serif;
+  --color-paper: var(--color-paper);
+  --color-white: var(--color-white);
+  --color-navy: var(--color-navy);
+  --color-navy-dark: var(--color-navy-dark);
+  --color-red: var(--color-red);
+  --color-red-hover: var(--color-red-hover);
+  --color-yellow: var(--color-yellow);
+  --color-tint: var(--color-tint);
+  --color-line: var(--color-line);
 }
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: var(--off-white);
-  color: var(--ink);
-  line-height: 1.6;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-/* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+  background-color: #F8FAFD;
 }
 
-/* Keyframe animations */
-@keyframes fadeInUp {
-  from {
+body {
+  font-family: var(--font-body), 'Hind Siliguri', sans-serif;
+  font-size: 17.5px;
+  line-height: 1.65;
+  background-color: var(--color-paper);
+  color: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings in Bricolage Grotesque */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), 'Bricolage Grotesque', sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  color: var(--color-navy);
+  text-wrap: balance;
+}
+
+/* Display Bengali text in Hind Siliguri with proper weight and line height */
+.bangla-slogan {
+  font-family: var(--font-body), 'Hind Siliguri', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Max text measure for readable lines */
+.max-prose-measure {
+  max-width: 68ch;
+}
+
+/* Two distinct radii: small 8px for controls/inputs/buttons, 24px for photo frames */
+.radius-sm {
+  border-radius: 8px;
+}
+
+.radius-frame {
+  border-radius: 24px;
+}
+
+/* Orchestrated entrance animations in Hero only (respects prefers-reduced-motion) */
+@keyframes disc-settle {
+  0% {
+    transform: scale(0.88);
     opacity: 0;
-    transform: translateY(20px);
   }
-  to {
+  100% {
+    transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes headline-reveal {
+  0% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) scale(1);
+@media (prefers-reduced-motion: no-preference) {
+  .animate-disc {
+    animation: disc-settle 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-  50% {
-    transform: translateY(-16px) scale(1.03);
+  .animate-hero-text {
+    animation: headline-reveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.35;
-  }
-  50% {
-    opacity: 0.75;
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-slow {
-  animation: float 8s ease-in-out infinite;
-}
-
-.animate-float-slower {
-  animation: float 10s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-/* 4-color demo accent bar */
-.accent-bar {
-  display: flex;
-  width: 100%;
-  height: 4px;
-}
-
-.accent-bar > span {
-  flex: 1;
-}
-
-/* Glass card component */
-.glass-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1rem;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--off-white);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--navy);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--navy-light);
 }

@@ -1,250 +1,169 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-interface NavbarProps {
-  currentPage?: "home" | "proposal";
-}
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
-export default function Navbar({ currentPage = "home" }: NavbarProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // Close mobile menu on Esc or route change
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    if (open) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
+  const links = [
+    { href: "/events/debate-2026", label: "Debate 2026" },
+    { href: "/activities", label: "Past Activities" },
+    { href: "/events", label: "Events" },
+    { href: "/about", label: "About" },
+    { href: "/volunteer", label: "Volunteer" },
+  ];
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href === "/events") return pathname === "/events";
+    return pathname.startsWith(href);
+  };
 
   return (
-    <>
-      <nav className="w-full px-4 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between border-b border-navy/10 bg-white/85 backdrop-blur-md sticky top-[4px] z-40 transition-all">
-        {/* Brand with Logo */}
-        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
-          <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden shadow-sm border border-navy/10 bg-white p-0.5 group-hover:scale-105 transition-transform flex-shrink-0">
-            <Image
-              src="/logo.png"
-              alt="Uttara Youth Society Logo"
-              width={40}
-              height={40}
-              className="object-contain w-full h-full"
-              priority
-            />
-          </div>
-          <div className="leading-tight">
-            <div className="font-display font-bold text-base sm:text-lg text-navy tracking-tight group-hover:text-gold transition-colors">
-              Uttara Youth Society
-            </div>
-            <div className="text-[10px] sm:text-[11px] text-muted font-medium tracking-wide">
-              {currentPage === "home" ? "Debate Club · Uttara, Dhaka" : "Debate Club · Sponsorship 2026"}
-            </div>
-          </div>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
-          {currentPage === "home" ? (
-            <>
-              <Link
-                href="#about"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                About Us
-              </Link>
-              <Link
-                href="#pillars"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                Pillars
-              </Link>
-              <Link
-                href="#impact"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                Dual Impact
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="#overview"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                Overview
-              </Link>
-              <Link
-                href="#structure"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                Structure
-              </Link>
-              <Link
-                href="#packages"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                Packages
-              </Link>
-              <Link
-                href="#budget"
-                className="text-sm font-medium text-muted hover:text-navy transition-colors"
-              >
-                Budget
-              </Link>
-            </>
-          )}
-
-          {currentPage === "home" ? (
-            <Link
-              href="/debate-partnership"
-              className="relative group inline-flex items-center justify-center px-4 py-2 bg-navy text-white text-sm font-medium rounded-full overflow-hidden shadow-sm hover:shadow-md transition-all hover:bg-navy-light"
-            >
-              <span className="relative z-10 flex items-center gap-1.5">
-                <span>Championship 2026</span>
-                <span className="px-1.5 py-0.5 text-[10px] bg-gold text-navy font-bold rounded-full">
-                  Proposal
-                </span>
-              </span>
-            </Link>
-          ) : (
-            <a
-              href="mailto:contact@uttarayouthsociety.org?subject=Sponsorship%20Inquiry%20-%20Uttara%20Debate%20Championship%202026"
-              className="inline-flex items-center px-4 py-2 bg-navy text-white text-xs font-bold rounded-full hover:bg-navy-light transition-colors shadow-sm"
-            >
-              Contact Secretariat
-            </a>
-          )}
-        </div>
-
-        {/* Mobile Action & Hamburger Button */}
-        <div className="flex md:hidden items-center gap-2">
-          {currentPage === "home" ? (
-            <Link
-              href="/debate-partnership"
-              className="inline-flex items-center justify-center px-3 py-1.5 bg-navy text-white text-xs font-bold rounded-full shadow-sm hover:bg-navy-light"
-            >
-              2026 Proposal
-            </Link>
-          ) : (
-            <a
-              href="mailto:contact@uttarayouthsociety.org"
-              className="inline-flex items-center justify-center px-3 py-1.5 bg-navy text-white text-xs font-bold rounded-full shadow-sm"
-            >
-              Contact
-            </a>
-          )}
-
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl text-navy hover:bg-navy/5 focus:outline-none focus:ring-2 focus:ring-gold transition-colors"
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileMenuOpen}
+    <header className="sticky top-0 z-50 bg-[#FFFFFF] border-b border-[#D6DDEA]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo & Identity */}
+          <Link
+            href="/"
+            className="flex items-center gap-3.5 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#071B3A] rounded-md"
           >
-            {mobileMenuOpen ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-        </div>
-      </nav>
+            <div className="w-11 h-11 relative rounded-md border border-[#D6DDEA] bg-white p-1 flex-shrink-0 group-hover:border-[#071B3A] transition-colors">
+              <Image
+                src="/logo.png"
+                alt="Uttara Youth Society Emblem"
+                width={40}
+                height={40}
+                className="object-contain w-full h-full"
+                priority
+              />
+            </div>
+            <div className="leading-tight">
+              <span className="font-heading font-bold text-lg sm:text-xl text-[#071B3A] tracking-tight block">
+                Uttara Youth Society
+              </span>
+              <span className="bangla-slogan text-xs text-[#071B3A]/70 font-medium block">
+                উত্তরা যুব সোসাইটি
+              </span>
+            </div>
+          </Link>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[52px] sm:top-[56px] z-30 bg-white/95 backdrop-blur-xl border-b border-navy/10 px-6 py-6 shadow-2xl md:hidden animate-fade-in-up">
-          <div className="flex flex-col gap-4">
-            {currentPage === "home" ? (
-              <>
-                <Link
-                  href="#about"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>About Us</span>
-                  <span className="text-muted text-xs">→</span>
-                </Link>
-                <Link
-                  href="#pillars"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>Core Pillars</span>
-                  <span className="text-muted text-xs">→</span>
-                </Link>
-                <Link
-                  href="#impact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>Dual Impact Model</span>
-                  <span className="text-muted text-xs">→</span>
-                </Link>
-                <Link
-                  href="/debate-partnership"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-3 bg-gradient-to-r from-gold to-gold-light text-navy font-bold rounded-xl shadow-md mt-2"
-                >
-                  View Championship 2026 Proposal
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>← Home Page</span>
-                </Link>
-                <Link
-                  href="#overview"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>Event Overview</span>
-                  <span className="text-muted text-xs">→</span>
-                </Link>
-                <Link
-                  href="#structure"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>Tournament Structure</span>
-                  <span className="text-muted text-xs">→</span>
-                </Link>
-                <Link
-                  href="#packages"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>7 Sponsorship Packages</span>
-                  <span className="text-muted text-xs">→</span>
-                </Link>
-                <Link
-                  href="#budget"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-navy py-2 border-b border-navy/5 flex items-center justify-between"
-                >
-                  <span>Budget &amp; Transparency</span>
-                  <span className="text-muted text-xs">→</span>
-                </Link>
-                <a
-                  href="mailto:contact@uttarayouthsociety.org?subject=Sponsorship%20Inquiry%20-%20Uttara%20Debate%20Championship%202026"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-3 bg-navy text-white font-bold rounded-xl shadow-md mt-2"
-                >
-                  Email Secretariat
-                </a>
-              </>
-            )}
+          {/* Desktop Nav - 5 clean links */}
+          <nav className="hidden lg:flex items-center gap-7">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-[16px] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#071B3A] rounded-sm px-1 py-0.5 ${
+                  isActive(link.href)
+                    ? "text-[#E31C2A] font-semibold border-b-2 border-[#E31C2A]"
+                    : "text-[#071B3A]/80 hover:text-[#071B3A]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Single Red CTA Button */}
+          <div className="hidden sm:flex items-center">
+            <Link
+              href="/events/debate-2026#register"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-[8px] bg-[#E31C2A] hover:bg-[#C71420] text-white text-[15px] font-semibold shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#071B3A]"
+            >
+              Register for Debate 2026
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden items-center">
+            <button
+              type="button"
+              onClick={() => setOpen(!open)}
+              className="p-2.5 rounded-[8px] border border-[#D6DDEA] text-[#071B3A] hover:bg-[#E8EEF8] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#071B3A]"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {open ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Clean Mobile Full-Screen Sheet */}
+      {open && (
+        <div className="fixed inset-0 top-20 z-50 bg-white px-6 py-8 flex flex-col justify-between overflow-y-auto lg:hidden animate-hero-text">
+          <nav className="space-y-4">
+            <div className="border-b border-[#D6DDEA] pb-4 mb-4">
+              <span className="text-xs uppercase tracking-wider text-[#071B3A]/60 font-semibold">
+                Menu
+              </span>
+            </div>
+            <Link
+              href="/"
+              className={`block text-2xl font-heading font-bold py-2 ${
+                pathname === "/" ? "text-[#E31C2A]" : "text-[#071B3A]"
+              }`}
+            >
+              Home
+            </Link>
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block text-2xl font-heading font-bold py-2 ${
+                  isActive(link.href) ? "text-[#E31C2A]" : "text-[#071B3A]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="pt-8 border-t border-[#D6DDEA] space-y-4">
+            <Link
+              href="/events/debate-2026#register"
+              className="block w-full py-3.5 text-center rounded-[8px] bg-[#E31C2A] hover:bg-[#C71420] text-white text-base font-semibold shadow-sm transition-colors"
+            >
+              Register for Debate 2026
+            </Link>
+            <p className="text-xs text-[#071B3A]/60 text-center">
+              Uttara Youth Society · Uttara, Dhaka, Bangladesh
+            </p>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 }

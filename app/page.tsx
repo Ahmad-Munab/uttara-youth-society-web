@@ -1,318 +1,403 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-off-white selection:bg-gold/20 selection:text-navy overflow-x-hidden">
-      {/* 4-color Accent Bar from Demo */}
-      <div className="accent-bar sticky top-0 z-50">
-        <span style={{ backgroundColor: "#E8222E" }}></span>
-        <span style={{ backgroundColor: "#14A9F0" }}></span>
-        <span style={{ backgroundColor: "#5BC22B" }}></span>
-        <span style={{ backgroundColor: "#FFB414" }}></span>
-      </div>
+    <div className="min-h-screen flex flex-col bg-[#F8FAFD] text-[#071B3A]">
+      <Navbar />
 
-      {/* Responsive Navigation Bar with Actual Logo & Mobile Drawer */}
-      <Navbar currentPage="home" />
-
-      {/* Hero Section with Demo Atmospheric Dark Canvas */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-navy via-navy to-navy-light text-white px-4 sm:px-6 py-16 sm:py-24 md:py-36">
-        {/* Floating Ambient Orbs */}
-        <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[320px] sm:w-[600px] h-[250px] sm:h-[350px] bg-gradient-to-br from-blue-light/15 via-gold/15 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse-glow" />
-        <div className="absolute top-1/3 -left-20 w-48 sm:w-80 h-48 sm:h-80 bg-blue/15 rounded-full blur-3xl pointer-events-none animate-float-slow" />
-        <div className="absolute bottom-10 -right-16 w-56 sm:w-96 h-56 sm:h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none animate-float-slower" />
-
-        {/* Geometric SVG Polygons & Concentric Rings */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none opacity-20"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          viewBox="0 0 1000 600"
-        >
-          <defs>
-            <linearGradient id="hero-beam" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#ffffff" stopOpacity="0.2" />
-              <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <polygon points="120,0 240,0 40,600 -80,600" fill="url(#hero-beam)" />
-          <polygon points="680,0 840,0 960,600 800,600" fill="url(#hero-beam)" opacity="0.6" />
-          <g fill="none" stroke="#ffffff" strokeOpacity="0.08">
-            <circle cx="500" cy="300" r="160" />
-            <circle cx="500" cy="300" r="230" />
-            <circle cx="500" cy="300" r="310" />
-          </g>
-        </svg>
-
-        <div className="relative max-w-4xl mx-auto text-center z-10">
-          {/* Centered actual logo emblem with glowing glass container */}
-          <div className="mx-auto mb-6 sm:mb-8 w-20 h-20 sm:w-28 sm:h-28 rounded-2xl bg-white/10 backdrop-blur-md p-2.5 sm:p-3 border border-white/20 shadow-2xl flex items-center justify-center relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-gold via-blue-light to-green rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500" />
-            <Image
-              src="/logo.png"
-              alt="Uttara Youth Society"
-              width={96}
-              height={96}
-              className="relative object-contain drop-shadow-md w-full h-full"
-              priority
-            />
-          </div>
-
-          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-gold text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-5 sm:mb-6 shadow-inner max-w-[95%]">
-            <span className="w-1.5 h-1.5 rounded-full bg-green animate-ping flex-shrink-0" />
-            <span className="truncate">Where Ideas Meet, Voices Rise</span>
-          </div>
-
-          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1] sm:leading-[1.08] break-words">
-            Uttara Youth <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-gold via-gold-light to-amber-200 bg-clip-text text-transparent">
-              Society
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-xl md:text-2xl text-muted-light max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light px-2">
-            Nurturing leadership, articulation, and intellectual vigor through parliamentary debate and cultural synthesis across Bangladesh.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-            <Link
-              href="/debate-partnership"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold text-sm sm:text-base rounded-full shadow-lg shadow-gold/20 hover:scale-[1.02] active:scale-[0.98] transition-transform text-center"
-            >
-              Explore Debate Championship 2026
-            </Link>
-            <Link
-              href="#about"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 glass-card text-white font-medium text-sm sm:text-base rounded-full hover:bg-white/15 transition-all text-center"
-            >
-              Learn More
-            </Link>
-          </div>
-
-          {/* Quick Metrics Bar from HTML style */}
-          <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-left">
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white mb-0.5 sm:mb-1">
-                32+
+      {/* 1. HERO SECTION with the "Light of Reason" Yellow Disc Motif */}
+      <section className="relative overflow-hidden pt-12 pb-16 lg:py-24 border-b border-[#D6DDEA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Column: Big Headline & Action */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[8px] bg-[#E8EEF8] border border-[#D6DDEA] text-[#071B3A] text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-[#FFC400]" />
+                <span>Uttara, Dhaka · 12+ Years of Community Involvement</span>
               </div>
-              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
-                Debate Teams
+
+              <h1 className="font-heading font-extrabold text-4xl sm:text-6xl lg:text-[68px] leading-[1.08] tracking-tight text-[#071B3A] animate-hero-text">
+                Empowering Youth.<br />
+                Serving Humanity.<br />
+                Strengthening Communities.
+              </h1>
+
+              <p className="text-lg sm:text-xl text-[#071B3A]/85 max-w-xl leading-relaxed font-normal">
+                Uttara Youth Society creates meaningful platforms for students and young people to debate, lead, and contribute through intellectual competitions, student guidance, and humanitarian service.
+              </p>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <Link
+                  href="/events/debate-2026#register"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-[8px] bg-[#E31C2A] hover:bg-[#C71420] text-white font-semibold text-base shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#071B3A]"
+                >
+                  Register for Debate 2026
+                </Link>
+                <Link
+                  href="/activities"
+                  className="inline-flex items-center justify-center px-5 py-3.5 rounded-[8px] text-[#071B3A] hover:text-[#E31C2A] font-semibold text-base transition-colors"
+                >
+                  See our past work →
+                </Link>
               </div>
             </div>
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-blue-light mb-0.5 sm:mb-1">
-                2,000+
-              </div>
-              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
-                Live Attendees
-              </div>
-            </div>
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-green mb-0.5 sm:mb-1">
-                2 Divisions
-              </div>
-              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
-                Junior &amp; Senior
-              </div>
-            </div>
-            <div className="p-3.5 sm:p-4 rounded-xl bg-white/[0.04] border border-white/5">
-              <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gold mb-0.5 sm:mb-1">
-                16 Dec
-              </div>
-              <div className="text-[10px] sm:text-xs text-muted-light uppercase tracking-wider font-semibold">
-                Grand Finale
+
+            {/* Right Column: Yellow Disc Motif & Editorial Media Composition */}
+            <div className="lg:col-span-5 relative flex items-center justify-center mt-10 lg:mt-0">
+              <div className="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
+                {/* The "Light of Reason" Warm Yellow Disc */}
+                <div
+                  className="absolute w-[300px] sm:w-[360px] h-[300px] sm:h-[360px] rounded-full bg-[#FFC400] animate-disc -z-0 opacity-95 shadow-sm"
+                  aria-hidden="true"
+                />
+
+                {/* Layered Composition in front of the disc */}
+                <div className="relative z-10 w-full p-4 sm:p-6">
+                  <div className="bg-white rounded-[24px] border border-[#D6DDEA] p-6 shadow-xl space-y-4">
+                    <div className="flex items-center gap-3 border-b border-[#D6DDEA] pb-4">
+                      <div className="w-12 h-12 rounded-[8px] bg-[#E8EEF8] p-1.5 border border-[#D6DDEA] flex-shrink-0">
+                        <Image
+                          src="/logo.png"
+                          alt="UYS Emblem"
+                          width={44}
+                          height={44}
+                          className="object-contain w-full h-full"
+                        />
+                      </div>
+                      <div>
+                        <span className="font-heading font-bold text-base text-[#071B3A] block">
+                          Uttara Youth Society
+                        </span>
+                        <span className="bangla-slogan text-xs text-[#E31C2A] font-semibold block">
+                          যুক্তির আলোয় প্রোজ্জ্বলিত হোক তারুণ্যের পৃথিবী
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 text-xs sm:text-sm text-[#071B3A]/80 leading-relaxed">
+                      <p className="font-medium text-[#071B3A]">
+                        A youth and student development organization dedicated to nurturing confident, knowledgeable, and socially responsible citizens.
+                      </p>
+                      <p className="text-xs text-[#071B3A]/60 pt-1">
+                        Active programs across Debate, Humanitarian Relief, Education Mentorship, Sports, and Environmental Greening.
+                      </p>
+                    </div>
+
+                    <div className="pt-2 flex items-center justify-between text-xs font-semibold text-[#071B3A]">
+                      <span className="px-2.5 py-1 rounded-[8px] bg-[#E8EEF8] border border-[#D6DDEA]">
+                        Registration Active
+                      </span>
+                      <Link
+                        href="/events/debate-2026"
+                        className="text-[#E31C2A] hover:underline"
+                      >
+                        Debate 2026 Portal
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="px-4 sm:px-6 py-16 sm:py-24 bg-white relative">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
-              Who We Are
-            </span>
-            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy">
-              Fostering Discourse in Bangladesh
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-red via-blue-light to-gold mx-auto mt-4 rounded-full" />
-          </div>
-
-          <p className="text-muted text-base sm:text-lg md:text-xl leading-relaxed text-center mb-12 sm:mb-16 max-w-3xl mx-auto px-2">
-            Uttara Youth Society is a premier platform dedicated to nurturing articulation, critical reasoning, and youth civic engagement. Through our competitive debate leagues, educational symposiums, and cultural festivals, we shape a vibrant community of tomorrow&apos;s changemakers.
-          </p>
-
-          <div id="pillars" className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
-              <div className="w-1.5 h-12 bg-red rounded-full absolute left-0 top-6 sm:top-8" />
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-red/10 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 text-red text-2xl group-hover:scale-110 transition-transform">
-                💬
+      {/* 2. DEBATE 2026 FEATURE BAND (Full-Bleed Navy Contrast Rhythm) */}
+      <section className="bg-[#071B3A] text-white py-14 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="px-3 py-1 rounded-[8px] bg-[#E31C2A] text-white text-xs font-bold uppercase tracking-wider">
+                  Live Event
+                </span>
+                <span className="bangla-slogan text-sm sm:text-base text-[#FFC400] font-semibold">
+                  “যুক্তির আলোয় প্রোজ্জ্বলিত হোক তারুণ্যের পৃথিবী”
+                </span>
               </div>
-              <h3 className="font-display text-xl sm:text-2xl text-navy mb-2 sm:mb-3 font-bold">
-                Competitive Debate
-              </h3>
-              <p className="text-muted text-xs sm:text-sm leading-relaxed">
-                Mastering the Bengali Asian Parliamentary Debate format. Challenging the status quo on governance, ethics, technology, and culture.
+
+              <h2 className="font-heading font-bold text-2xl sm:text-4xl text-white tracking-tight">
+                Uttara Inter-School, College &amp; Madrasa Debate Championship 2026
+              </h2>
+
+              <p className="text-sm sm:text-base text-[#E8EEF8]/80 leading-relaxed max-w-2xl">
+                The premier Bengali Asian Parliamentary Debate (3v3) championship in Uttara. Open to all recognized schools, colleges, and madrasas across Junior and Senior divisions.
               </p>
+
+              {/* Event Data Meta Row */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10 text-xs text-[#E8EEF8]/80">
+                <div>
+                  <span className="block text-[#FFC400] font-semibold uppercase tracking-wider">Format</span>
+                  <span className="font-medium text-white text-sm">Asian Parliamentary</span>
+                </div>
+                <div>
+                  <span className="block text-[#FFC400] font-semibold uppercase tracking-wider">Language</span>
+                  <span className="font-medium text-white text-sm">Bengali (বাংলা)</span>
+                </div>
+                <div>
+                  <span className="block text-[#FFC400] font-semibold uppercase tracking-wider">Divisions</span>
+                  <span className="font-medium text-white text-sm">Junior &amp; Senior</span>
+                </div>
+                <div>
+                  <span className="block text-[#FFC400] font-semibold uppercase tracking-wider">Venue</span>
+                  <span className="font-medium text-white text-sm">Uttara, Dhaka</span>
+                </div>
+              </div>
             </div>
 
-            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
-              <div className="w-1.5 h-12 bg-blue-light rounded-full absolute left-0 top-6 sm:top-8" />
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-light/10 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 text-blue-light text-2xl group-hover:scale-110 transition-transform">
-                🎓
-              </div>
-              <h3 className="font-display text-xl sm:text-2xl text-navy mb-2 sm:mb-3 font-bold">
-                Youth Academics
-              </h3>
-              <p className="text-muted text-xs sm:text-sm leading-relaxed">
-                Workshops on rhetoric, public adjudication, research methodologies, and policy design led by seasoned national debaters.
-              </p>
-            </div>
-
-            <div className="p-6 sm:p-8 bg-off-white rounded-3xl border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group sm:col-span-2 md:col-span-1">
-              <div className="w-1.5 h-12 bg-green rounded-full absolute left-0 top-6 sm:top-8" />
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-green/10 rounded-2xl flex items-center justify-center mb-5 sm:mb-6 text-green text-2xl group-hover:scale-110 transition-transform">
-                🤝
-              </div>
-              <h3 className="font-display text-xl sm:text-2xl text-navy mb-2 sm:mb-3 font-bold">
-                Leadership Network
-              </h3>
-              <p className="text-muted text-xs sm:text-sm leading-relaxed">
-                Uniting bright minds across schools, colleges, and universities in Uttara and greater Dhaka into a lasting fellowship.
-              </p>
+            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center lg:items-end">
+              <Link
+                href="/events/debate-2026#register"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-[8px] bg-[#E31C2A] hover:bg-[#C71420] text-white font-semibold text-sm shadow-sm transition-colors text-center"
+              >
+                Register Your Team
+              </Link>
+              <Link
+                href="/events/debate-2026"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-[8px] border border-white/30 hover:bg-white/10 text-white font-semibold text-sm transition-colors text-center"
+              >
+                Tournament Guide &amp; Rules
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Dual Impact Section: Intellect by Day, Culture by Night */}
-      <section id="impact" className="px-4 sm:px-6 py-16 sm:py-20 bg-off-white border-y border-navy/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10 sm:mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-3">
-              Dual-Audience Synergy
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
-              Intellect by Day, Culture by Night
+      {/* 3. WHAT WE DO: Alternating Photo-Led Editorial Rows (No SaaS Cards) */}
+      <section className="py-16 sm:py-24 bg-[#F8FAFD] border-b border-[#D6DDEA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <h2 className="font-heading font-bold text-3xl sm:text-5xl text-[#071B3A] tracking-tight">
+              What We Do
             </h2>
-            <p className="text-muted text-xs sm:text-sm md:text-base mt-2 max-w-2xl mx-auto px-2">
-              Our flagship model delivers two distinct opportunities in one landmark event.
+            <p className="text-base sm:text-lg text-[#071B3A]/80 mt-3 leading-relaxed">
+              We operate across two complementary commitments: nurturing youth potential through intellectual platforms, and encouraging young people to contribute positively to their community.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            <div className="p-6 sm:p-8 bg-white rounded-3xl shadow-sm border border-navy/5 relative overflow-hidden">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue/10 text-blue font-bold flex items-center justify-center mb-4 text-sm sm:text-base">
-                01
+          <div className="space-y-16 lg:space-y-24">
+            {/* Row 1: Debate & Public Speaking (Frame Left, Text Right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="lg:col-span-5 order-2 lg:order-1">
+                {/* 24px photo frame with neutral editorial archive treatment */}
+                <div className="relative rounded-[24px] border border-[#D6DDEA] bg-white p-6 shadow-sm overflow-hidden">
+                  <div className="aspect-[4/3] rounded-[16px] bg-[#E8EEF8] border border-[#D6DDEA] p-6 flex flex-col justify-between">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-1 rounded-[8px] bg-white text-xs font-semibold text-[#071B3A] border border-[#D6DDEA]">
+                        Speech &amp; Debate
+                      </span>
+                      <span className="text-xs text-[#071B3A]/60 font-medium">Archival Focus</span>
+                    </div>
+                    <div>
+                      <p className="bangla-slogan text-lg font-bold text-[#071B3A] mb-1">
+                        যুক্তির আলোয় প্রোজ্জ্বলিত হোক তারুণ্যের পৃথিবী
+                      </p>
+                      <p className="text-xs text-[#071B3A]/70">
+                        Inter-School, College &amp; Madrasa Parliamentary Debate Series
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="text-[11px] sm:text-xs font-bold text-blue tracking-wider uppercase mb-1 block">
-                Part A · Daytime Programme
-              </span>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-navy mb-2 sm:mb-3">
-                Debate Championship &amp; Prize-Giving
-              </h3>
-              <p className="text-muted text-xs sm:text-sm leading-relaxed mb-6">
-                Connect directly with serious academic talent, dedicated faculty, principals, coaches, and passionate youth leaders engaged in intense civic dialogue.
-              </p>
-              <ul className="space-y-2 text-xs text-muted font-medium">
-                <li className="flex items-center gap-2">
-                  <span className="text-blue">✔</span> 32+ leading schools, colleges, and madrasas
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue">✔</span> Independent adjudication &amp; national motions
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-blue">✔</span> Formal grand auditorium finals &amp; awards
-                </li>
-              </ul>
+
+              <div className="lg:col-span-7 order-1 lg:order-2 space-y-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#071B3A]/60">
+                  Intellectual Development
+                </span>
+                <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#071B3A]">
+                  Debate, Public Speaking &amp; Critical Reasoning
+                </h3>
+                <p className="text-base text-[#071B3A]/80 leading-relaxed max-prose-measure">
+                  Confidence in expressing ideas is an essential skill for students and future leaders. UYS organizes inter-school and college debate tournaments under the Bengali Asian Parliamentary format, teaching young debaters to research rigorous motions, construct logical arguments, and express disagreement with mutual respect.
+                </p>
+                <div className="pt-2">
+                  <Link
+                    href="/events/debate-2026"
+                    className="inline-flex items-center text-sm font-semibold text-[#E31C2A] hover:underline underline-offset-4"
+                  >
+                    Explore Debate Championship 2026 details
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            <div className="p-6 sm:p-8 bg-navy text-white rounded-3xl shadow-xl relative overflow-hidden">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gold/20 text-gold font-bold flex items-center justify-center mb-4 text-sm sm:text-base">
-                02
+            {/* Row 2: Humanitarian Assistance & Disaster Relief (Text Left, Frame Right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="lg:col-span-7 space-y-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#071B3A]/60">
+                  Humanitarian Service
+                </span>
+                <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#071B3A]">
+                  Winter Clothing Drives, Flood Relief &amp; Emergency Welfare
+                </h3>
+                <p className="text-base text-[#071B3A]/80 leading-relaxed max-prose-measure">
+                  Alongside youth empowerment, UYS maintains a longstanding commitment to helping disadvantaged communities. During severe winters, student volunteers collect and distribute warm garments to vulnerable families. During flood emergencies, our volunteers mobilize dry rations and clean water for displaced households.
+                </p>
+                <div className="pt-2">
+                  <Link
+                    href="/activities"
+                    className="inline-flex items-center text-sm font-semibold text-[#071B3A] hover:text-[#E31C2A] underline underline-offset-4"
+                  >
+                    View documented relief initiatives in the archive
+                  </Link>
+                </div>
               </div>
-              <span className="text-[11px] sm:text-xs font-bold text-gold tracking-wider uppercase mb-1 block">
-                Part B · Evening Programme
-              </span>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
-                Live Music Festival
-              </h3>
-              <p className="text-muted-light text-xs sm:text-sm leading-relaxed mb-6">
-                A high-energy cultural evening drawing an audience of 2,000+ youth, students, and community families celebrating Victory Day together.
-              </p>
-              <ul className="space-y-2 text-xs text-muted-light font-medium">
-                <li className="flex items-center gap-2">
-                  <span className="text-gold">✔</span> Celebrated youth bands &amp; headline artists
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-gold">✔</span> High-impact LED screens, lighting, and sound
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-gold">✔</span> Direct youth engagement &amp; lifestyle stalls
-                </li>
-              </ul>
+
+              <div className="lg:col-span-5">
+                <div className="relative rounded-[24px] border border-[#D6DDEA] bg-white p-6 shadow-sm overflow-hidden">
+                  <div className="aspect-[4/3] rounded-[16px] bg-[#E8EEF8] border border-[#D6DDEA] p-6 flex flex-col justify-between">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-1 rounded-[8px] bg-white text-xs font-semibold text-[#071B3A] border border-[#D6DDEA]">
+                        Community Relief
+                      </span>
+                      <span className="text-xs text-[#071B3A]/60 font-medium">Field Archive</span>
+                    </div>
+                    <div>
+                      <p className="font-heading font-bold text-lg text-[#071B3A] mb-1">
+                        Grassroots Volunteer Action
+                      </p>
+                      <p className="text-xs text-[#071B3A]/70">
+                        Seasonal winter drives, disaster flood parcels &amp; COVID-19 health support
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Row 3: Education, Sports & Environmental Sustainability (Frame Left, Text Right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="lg:col-span-5 order-2 lg:order-1">
+                <div className="relative rounded-[24px] border border-[#D6DDEA] bg-white p-6 shadow-sm overflow-hidden">
+                  <div className="aspect-[4/3] rounded-[16px] bg-[#E8EEF8] border border-[#D6DDEA] p-6 flex flex-col justify-between">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2.5 py-1 rounded-[8px] bg-white text-xs font-semibold text-[#071B3A] border border-[#D6DDEA]">
+                        Youth &amp; Environment
+                      </span>
+                      <span className="text-xs text-[#071B3A]/60 font-medium">Uttara Programs</span>
+                    </div>
+                    <div>
+                      <p className="font-heading font-bold text-lg text-[#071B3A] mb-1">
+                        Badminton, Cricket &amp; Tree Planting
+                      </p>
+                      <p className="text-xs text-[#071B3A]/70">
+                        Inter-ward tournaments &amp; direct student sapling distributions
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 order-1 lg:order-2 space-y-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#071B3A]/60">
+                  Extracurricular Growth
+                </span>
+                <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#071B3A]">
+                  Sports Tournaments, Career Guidance &amp; Urban Greening
+                </h3>
+                <p className="text-base text-[#071B3A]/80 leading-relaxed max-prose-measure">
+                  Holistic student development requires activities beyond textbooks. We organize badminton and cricket tournaments that build camaraderie and fitness. We provide board examination guidance for SSC and HSC candidates, and lead tree plantation campaigns distributing saplings directly to school students.
+                </p>
+                <div className="pt-2">
+                  <Link
+                    href="/activities"
+                    className="inline-flex items-center text-sm font-semibold text-[#071B3A] hover:text-[#E31C2A] underline underline-offset-4"
+                  >
+                    See sports tournaments and tree plantation records
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Banner for Championship */}
-      <section className="px-4 sm:px-6 py-14 sm:py-16 bg-navy text-white relative overflow-hidden">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 relative z-10 text-center md:text-left">
-          <div>
-            <div className="inline-block px-3 py-1 rounded-full bg-gold/20 text-gold text-xs font-bold uppercase tracking-wider mb-3">
-              Upcoming Flagship Event
-            </div>
-            <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-              Uttara Debate Championship <span className="text-gold">2026</span>
-            </h3>
-            <p className="text-muted-light text-sm sm:text-base max-w-xl mx-auto md:mx-0">
-              Complete proposal with 7 sponsorship tiers, tournament structure, transparent budget breakdown, and competition integrity code.
-            </p>
-          </div>
-          <Link
-            href="/debate-partnership"
-            className="w-full sm:w-auto flex-shrink-0 px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-gold to-gold-light text-navy font-bold rounded-full hover:scale-105 transition-transform shadow-lg shadow-gold/20 text-center text-sm sm:text-base"
-          >
-            View Complete Proposal →
-          </Link>
-        </div>
-      </section>
-
-      {/* Footer with 4-color strip and clean copyright */}
-      <footer className="mt-auto bg-navy text-white">
-        <div className="accent-bar">
-          <span style={{ backgroundColor: "#E8222E" }}></span>
-          <span style={{ backgroundColor: "#14A9F0" }}></span>
-          <span style={{ backgroundColor: "#5BC22B" }}></span>
-          <span style={{ backgroundColor: "#FFB414" }}></span>
-        </div>
-        <div className="px-6 py-10 sm:py-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/logo.png"
-              alt="Uttara Youth Society Logo"
-              width={36}
-              height={36}
-              className="object-contain"
-            />
+      {/* 4. COMPACT 12+ YEARS TIMELINE STRIP */}
+      <section className="py-16 bg-white border-b border-[#D6DDEA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <div className="font-display font-bold text-base sm:text-lg text-white">
-                Uttara Youth Society
-              </div>
-              <p className="text-xs text-muted-light">
-                Where Ideas Meet, Voices Rise. Uttara, Dhaka, Bangladesh.
+              <h2 className="font-heading font-bold text-2xl sm:text-4xl text-[#071B3A]">
+                12+ Years of Community Involvement
+              </h2>
+            </div>
+            <Link
+              href="/activities"
+              className="text-sm font-semibold text-[#071B3A] hover:text-[#E31C2A] transition-colors"
+            >
+              Browse full archival gallery →
+            </Link>
+          </div>
+
+          {/* Compact Timeline Strip with verified milestones only */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="p-5 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA]">
+              <span className="text-xs font-bold text-[#E31C2A] block mb-1">Humanitarian Anchor</span>
+              <h3 className="font-heading font-bold text-base text-[#071B3A] mb-1">
+                Winter Clothing Distribution
+              </h3>
+              <p className="text-xs text-[#071B3A]/70 leading-relaxed">
+                Over a decade of seasonal drives providing warm garments and blankets to vulnerable community members in winter.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA]">
+              <span className="text-xs font-bold text-[#071B3A] block mb-1">Emergency Service</span>
+              <h3 className="font-heading font-bold text-base text-[#071B3A] mb-1">
+                Flood Relief &amp; Health Support
+              </h3>
+              <p className="text-xs text-[#071B3A]/70 leading-relaxed">
+                Disaster relief packages for flood-affected families and handwashing/mask distribution during COVID-19.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA]">
+              <span className="text-xs font-bold text-[#071B3A] block mb-1">Documented 2024</span>
+              <h3 className="font-heading font-bold text-base text-[#071B3A] mb-1">
+                Inter-Ward Badminton Tournament
+              </h3>
+              <p className="text-xs text-[#071B3A]/70 leading-relaxed">
+                Nearly 50 student participants from across Uttara wards competed in singles and doubles brackets.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA]">
+              <span className="text-xs font-bold text-[#E31C2A] block mb-1">Flagship 2026</span>
+              <h3 className="font-heading font-bold text-base text-[#071B3A] mb-1">
+                Inter-School Debate Championship
+              </h3>
+              <p className="text-xs text-[#071B3A]/70 leading-relaxed">
+                Bengali Asian Parliamentary tournament bringing together students from schools, colleges, and madrasas.
               </p>
             </div>
           </div>
-          <div className="text-xs text-muted-light">
-            © 2026 Uttara Youth Society – Debate Club. All rights reserved.
+        </div>
+      </section>
+
+      {/* 5. SHORT VOLUNTEER CALL-TO-ACTION */}
+      <section className="py-16 bg-[#E8EEF8]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-4">
+          <h2 className="font-heading font-bold text-2xl sm:text-4xl text-[#071B3A] tracking-tight">
+            Ready to lead or volunteer in your community?
+          </h2>
+          <p className="text-base text-[#071B3A]/80 max-w-xl mx-auto leading-relaxed">
+            Students and young people in Uttara are invited to join our event committees, tournament teams, and community relief drives.
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/volunteer"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-[8px] bg-[#071B3A] hover:bg-[#0E2A59] text-white font-semibold text-sm transition-colors"
+            >
+              Apply to Volunteer
+            </Link>
           </div>
         </div>
-      </footer>
+      </section>
+
+      <Footer />
     </div>
   );
 }
