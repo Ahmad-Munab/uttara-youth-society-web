@@ -74,8 +74,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/volunteer" className="hover:text-white transition-colors">
-                  Volunteer Application
+                <Link href="/member" className="hover:text-white transition-colors">
+                  Member Registration
                 </Link>
               </li>
               <li>

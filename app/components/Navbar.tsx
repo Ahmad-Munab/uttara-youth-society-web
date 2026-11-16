@@ -35,7 +35,7 @@ export default function Navbar() {
     { href: "/activities", label: "Past Activities" },
     { href: "/events", label: "Events" },
     { href: "/about", label: "About" },
-    { href: "/volunteer", label: "Volunteer" },
+    { href: "/member", label: "Member" },
   ];
 
   const isActive = (href: string) => {
@@ -66,9 +66,6 @@ export default function Navbar() {
             <div className="leading-tight">
               <span className="font-heading font-bold text-lg sm:text-xl text-[#071B3A] tracking-tight block">
                 Uttara Youth Society
-              </span>
-              <span className="bangla-slogan text-xs text-[#071B3A]/70 font-medium block">
-                উত্তরা যুব সোসাইটি
               </span>
             </div>
           </Link>

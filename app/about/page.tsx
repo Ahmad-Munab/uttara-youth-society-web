@@ -178,10 +178,10 @@ export default function AboutPage() {
               Interested in collaborating or participating in our student initiatives?
             </p>
             <Link
-              href="/volunteer"
+              href="/member"
               className="inline-flex items-center px-6 py-2.5 rounded-[8px] bg-[#071B3A] hover:bg-[#0E2A59] text-white text-xs font-semibold transition-colors"
             >
-              Join as Volunteer
+              Join as Member
             </Link>
           </div>
         </div>

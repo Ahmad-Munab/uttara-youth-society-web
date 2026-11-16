@@ -132,7 +132,7 @@ export default function ContactPage() {
                     >
                       <option value="General Inquiry">General Inquiry</option>
                       <option value="Debate 2026 Tournament">Debate 2026 Tournament</option>
-                      <option value="Volunteer Registration">Volunteer Application</option>
+                      <option value="Member Registration">Member Application</option>
                       <option value="Institutional Partnership">Institutional / School Partnership</option>
                     </select>
                   </div>

@@ -377,21 +377,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. SHORT VOLUNTEER CALL-TO-ACTION */}
+      {/* 5. SHORT MEMBER CALL-TO-ACTION */}
       <section className="py-16 bg-[#E8EEF8]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-4">
           <h2 className="font-heading font-bold text-2xl sm:text-4xl text-[#071B3A] tracking-tight">
-            Ready to lead or volunteer in your community?
+            Ready to lead or participate in your community?
           </h2>
           <p className="text-base text-[#071B3A]/80 max-w-xl mx-auto leading-relaxed">
             Students and young people in Uttara are invited to join our event committees, tournament teams, and community relief drives.
           </p>
           <div className="pt-2">
             <Link
-              href="/volunteer"
+              href="/member"
               className="inline-flex items-center justify-center px-7 py-3 rounded-[8px] bg-[#071B3A] hover:bg-[#0E2A59] text-white font-semibold text-sm transition-colors"
             >
-              Apply to Volunteer
+              Apply as a Member
             </Link>
           </div>
         </div>

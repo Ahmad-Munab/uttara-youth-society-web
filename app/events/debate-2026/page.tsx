@@ -8,19 +8,17 @@ import Footer from "@/app/components/Footer";
 
 export default function Debate2026Page() {
   const [formData, setFormData] = useState({
-    division: "Junior",
-    teamName: "",
+    category: "Junior",
     institution: "",
-    institutionCity: "Uttara, Dhaka",
-    leaderName: "",
-    leaderPhone: "",
-    leaderEmail: "",
-    speaker2Name: "",
-    speaker3Name: "",
-    reserveSpeakerName: "",
-    coachName: "",
-    coachPhone: "",
-    notes: "",
+    clubName: "",
+    teamName: "",
+    member1Name: "",
+    member1Phone: "",
+    member2Name: "",
+    member2Phone: "",
+    member3Name: "",
+    member3Phone: "",
+    note: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -33,21 +31,33 @@ export default function Debate2026Page() {
 
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!formData.teamName.trim()) errs.teamName = "Team name is required.";
     if (!formData.institution.trim()) errs.institution = "Institution name is required.";
-    if (!formData.leaderName.trim()) errs.leaderName = "Team leader name is required.";
-    if (!formData.leaderPhone.trim()) {
-      errs.leaderPhone = "Phone number is required.";
-    } else if (formData.leaderPhone.trim().length < 10) {
-      errs.leaderPhone = "Please enter a valid phone number (at least 10 digits).";
+    if (!formData.teamName.trim()) errs.teamName = "Team name is required.";
+    
+    // Member 1
+    if (!formData.member1Name.trim()) errs.member1Name = "Member 1 name is required.";
+    if (!formData.member1Phone.trim()) {
+      errs.member1Phone = "Member 1 number is required.";
+    } else if (formData.member1Phone.trim().length < 10) {
+      errs.member1Phone = "Enter a valid phone number (at least 10 digits).";
     }
-    if (!formData.leaderEmail.trim()) {
-      errs.leaderEmail = "Email address is required.";
-    } else if (!formData.leaderEmail.includes("@")) {
-      errs.leaderEmail = "Please enter a valid email address with an @.";
+
+    // Member 2
+    if (!formData.member2Name.trim()) errs.member2Name = "Member 2 name is required.";
+    if (!formData.member2Phone.trim()) {
+      errs.member2Phone = "Member 2 number is required.";
+    } else if (formData.member2Phone.trim().length < 10) {
+      errs.member2Phone = "Enter a valid phone number (at least 10 digits).";
     }
-    if (!formData.speaker2Name.trim()) errs.speaker2Name = "Speaker 2 name is required.";
-    if (!formData.speaker3Name.trim()) errs.speaker3Name = "Speaker 3 name is required.";
+
+    // Member 3
+    if (!formData.member3Name.trim()) errs.member3Name = "Member 3 name is required.";
+    if (!formData.member3Phone.trim()) {
+      errs.member3Phone = "Member 3 number is required.";
+    } else if (formData.member3Phone.trim().length < 10) {
+      errs.member3Phone = "Enter a valid phone number (at least 10 digits).";
+    }
+
     return errs;
   };
 
@@ -81,20 +91,19 @@ export default function Debate2026Page() {
         id: data.registrationId,
       });
 
-      setFormData((prev) => ({
-        ...prev,
-        teamName: "",
+      setFormData({
+        category: "Junior",
         institution: "",
-        leaderName: "",
-        leaderPhone: "",
-        leaderEmail: "",
-        speaker2Name: "",
-        speaker3Name: "",
-        reserveSpeakerName: "",
-        coachName: "",
-        coachPhone: "",
-        notes: "",
-      }));
+        clubName: "",
+        teamName: "",
+        member1Name: "",
+        member1Phone: "",
+        member2Name: "",
+        member2Phone: "",
+        member3Name: "",
+        member3Phone: "",
+        note: "",
+      });
     } catch (err: any) {
       setStatusMessage({
         type: "error",
@@ -163,10 +172,10 @@ export default function Debate2026Page() {
             </div>
             <div className="p-4 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA]">
               <span className="block text-xs uppercase font-semibold text-[#071B3A]/60">Team Roster</span>
-              <span className="font-bold text-[#071B3A] text-base">3 Debaters + 1 Reserve</span>
+              <span className="font-bold text-[#071B3A] text-base">3 Team Members</span>
             </div>
             <div className="p-4 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA]">
-              <span className="block text-xs uppercase font-semibold text-[#071B3A]/60">Divisions</span>
+              <span className="block text-xs uppercase font-semibold text-[#071B3A]/60">Categories</span>
               <span className="font-bold text-[#071B3A] text-base">Junior &amp; Senior</span>
             </div>
             <div className="p-4 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA]">
@@ -191,15 +200,15 @@ export default function Debate2026Page() {
               <ul className="space-y-2 text-sm text-[#071B3A]/85 pt-2">
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#E31C2A] font-bold">•</span>
-                  <span><strong className="text-[#071B3A]">Junior Division:</strong> Students currently in Class 6 through Class 10, or Madrasa Dakhil equivalent.</span>
+                  <span><strong className="text-[#071B3A]">Junior Category:</strong> Students currently in Class 6 through Class 10, or Madrasa Dakhil equivalent.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#E31C2A] font-bold">•</span>
-                  <span><strong className="text-[#071B3A]">Senior Division:</strong> Students in Class 11–12 (HSC), Madrasa Alim, or undergraduate college/university debaters.</span>
+                  <span><strong className="text-[#071B3A]">Senior Category:</strong> Students in Class 11–12 (HSC), Madrasa Alim, or undergraduate college/university debaters.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#E31C2A] font-bold">•</span>
-                  <span><strong className="text-[#071B3A]">Institutional Teams:</strong> Institutions may field multiple debating teams with an accompanying teacher or moderator.</span>
+                  <span><strong className="text-[#071B3A]">Institutional Teams:</strong> Institutions and student debate clubs may field multiple teams.</span>
                 </li>
               </ul>
             </div>
@@ -214,7 +223,7 @@ export default function Debate2026Page() {
               <ul className="space-y-2 text-sm text-[#071B3A]/85 pt-2">
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#071B3A] font-bold">•</span>
-                  <span><strong className="text-[#071B3A]">Independent Adjudication:</strong> Experienced national adjudicators judging based on Matter (40%), Manner (40%), and Method (20%).</span>
+                  <span><strong className="text-[#071B3A]">Independent Adjudication:</strong> Experienced national circuit adjudicators judging on Matter (40%), Manner (40%), and Method (20%).</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#071B3A] font-bold">•</span>
@@ -264,7 +273,7 @@ export default function Debate2026Page() {
         </div>
       </section>
 
-      {/* 4. KEY DATES & TIMELINE (Real Sequence 1, 2, 3, 4) */}
+      {/* 4. KEY DATES & TIMELINE */}
       <section className="py-14 bg-[#F8FAFD] border-b border-[#D6DDEA]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="max-w-2xl mb-8">
@@ -290,7 +299,7 @@ export default function Debate2026Page() {
               </div>
               <h3 className="font-heading font-bold text-base text-[#071B3A] mb-1">Roster Confirmation</h3>
               <p className="text-xs text-[#071B3A]/70 leading-relaxed">
-                The secretariat verifies student credentials and confirms institutional slots via phone and email.
+                The secretariat verifies student credentials and confirms institutional slots via phone.
               </p>
             </div>
 
@@ -317,7 +326,7 @@ export default function Debate2026Page() {
         </div>
       </section>
 
-      {/* 5. PARTICIPANT REGISTRATION FORM */}
+      {/* 5. PARTICIPANT REGISTRATION FORM (STRICTLY REQUESTED FIELDS ONLY) */}
       <section id="register" className="py-16 bg-white border-b border-[#D6DDEA]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <div className="mb-8">
@@ -325,7 +334,7 @@ export default function Debate2026Page() {
               Team Registration Form
             </h2>
             <p className="text-sm text-[#071B3A]/80 mt-2">
-              Fill out this single form for your debating team. Fields marked with an asterisk are required.
+              Fill out this form for your debating team. All fields except optional club name and note are required.
             </p>
           </div>
 
@@ -352,85 +361,67 @@ export default function Debate2026Page() {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Division Selection */}
+            {/* 1. Category */}
             <div>
               <label className="block text-sm font-bold text-[#071B3A] mb-2">
-                Division *
+                Category *
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <label
                   className={`p-4 rounded-[8px] border text-xs font-medium cursor-pointer transition-colors flex items-center justify-between ${
-                    formData.division === "Junior"
+                    formData.category === "Junior"
                       ? "border-[#071B3A] bg-[#071B3A] text-white"
                       : "border-[#D6DDEA] bg-white text-[#071B3A] hover:border-[#071B3A]"
                   }`}
                 >
                   <div>
-                    <span className="font-bold text-sm block">Junior Division</span>
+                    <span className="font-bold text-sm block">Junior Category</span>
                     <span className="opacity-80">Class 6–10 / Madrasa Dakhil</span>
                   </div>
                   <input
                     type="radio"
-                    name="division"
+                    name="category"
                     value="Junior"
-                    checked={formData.division === "Junior"}
-                    onChange={(e) => setFormData({ ...formData, division: e.target.value })}
+                    checked={formData.category === "Junior"}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                     className="sr-only"
                   />
                 </label>
 
                 <label
                   className={`p-4 rounded-[8px] border text-xs font-medium cursor-pointer transition-colors flex items-center justify-between ${
-                    formData.division === "Senior"
+                    formData.category === "Senior"
                       ? "border-[#071B3A] bg-[#071B3A] text-white"
                       : "border-[#D6DDEA] bg-white text-[#071B3A] hover:border-[#071B3A]"
                   }`}
                 >
                   <div>
-                    <span className="font-bold text-sm block">Senior Division</span>
+                    <span className="font-bold text-sm block">Senior Category</span>
                     <span className="opacity-80">Class 11–Univ / Madrasa Alim</span>
                   </div>
                   <input
                     type="radio"
-                    name="division"
+                    name="category"
                     value="Senior"
-                    checked={formData.division === "Senior"}
-                    onChange={(e) => setFormData({ ...formData, division: e.target.value })}
+                    checked={formData.category === "Senior"}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                     className="sr-only"
                   />
                 </label>
               </div>
             </div>
 
-            {/* Team & Institution Details */}
+            {/* 2. Institution, Club Name, Team Name */}
             <div className="space-y-4 pt-2">
               <div>
-                <label htmlFor="teamName" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                  Team Name *
-                </label>
-                <input
-                  id="teamName"
-                  type="text"
-                  required
-                  placeholder="e.g. Milestone Debaters A"
-                  value={formData.teamName}
-                  onChange={(e) => setFormData({ ...formData, teamName: e.target.value })}
-                  className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                />
-                {errors.teamName && (
-                  <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.teamName}</p>
-                )}
-              </div>
-
-              <div>
                 <label htmlFor="institution" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                  Institution Name *
+                  Institution *
                 </label>
                 <input
                   id="institution"
                   type="text"
                   required
-                  placeholder="School, College or Madrasa Name"
+                  placeholder="School, College, Madrasa or University Name"
                   value={formData.institution}
                   onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
                   className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
@@ -441,190 +432,190 @@ export default function Debate2026Page() {
               </div>
 
               <div>
-                <label htmlFor="institutionCity" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                  Institution Area / Location
+                <label htmlFor="clubName" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                  Club Name (Optional)
                 </label>
                 <input
-                  id="institutionCity"
+                  id="clubName"
                   type="text"
-                  placeholder="e.g. Sector 3, Uttara, Dhaka"
-                  value={formData.institutionCity}
-                  onChange={(e) => setFormData({ ...formData, institutionCity: e.target.value })}
+                  placeholder="e.g. Milestone Debate Club"
+                  value={formData.clubName}
+                  onChange={(e) => setFormData({ ...formData, clubName: e.target.value })}
                   className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
                 />
               </div>
-            </div>
 
-            {/* Team Leader (Speaker 1) */}
-            <div className="pt-4 border-t border-[#D6DDEA] space-y-4">
-              <h3 className="font-heading font-bold text-base text-[#071B3A]">
-                Team Leader (Speaker 1)
-              </h3>
               <div>
-                <label htmlFor="leaderName" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                  Leader Full Name *
+                <label htmlFor="teamName" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                  Team Name *
                 </label>
                 <input
-                  id="leaderName"
+                  id="teamName"
                   type="text"
                   required
-                  placeholder="Full name"
-                  value={formData.leaderName}
-                  onChange={(e) => setFormData({ ...formData, leaderName: e.target.value })}
+                  placeholder="e.g. Uttara High Team Alpha"
+                  value={formData.teamName}
+                  onChange={(e) => setFormData({ ...formData, teamName: e.target.value })}
                   className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
                 />
-                {errors.leaderName && (
-                  <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.leaderName}</p>
+                {errors.teamName && (
+                  <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.teamName}</p>
                 )}
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="leaderPhone" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                    Mobile Phone *
-                  </label>
-                  <input
-                    id="leaderPhone"
-                    type="tel"
-                    required
-                    placeholder="01XXXXXXXXX"
-                    value={formData.leaderPhone}
-                    onChange={(e) => setFormData({ ...formData, leaderPhone: e.target.value })}
-                    className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                  />
-                  {errors.leaderPhone && (
-                    <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.leaderPhone}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="leaderEmail" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    id="leaderEmail"
-                    type="email"
-                    required
-                    placeholder="leader@example.com"
-                    value={formData.leaderEmail}
-                    onChange={(e) => setFormData({ ...formData, leaderEmail: e.target.value })}
-                    className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                  />
-                  {errors.leaderEmail && (
-                    <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.leaderEmail}</p>
-                  )}
-                </div>
-              </div>
             </div>
 
-            {/* Other Speakers */}
-            <div className="pt-4 border-t border-[#D6DDEA] space-y-4">
+            {/* 3. Team Members Names & Numbers (1, 2, 3) */}
+            <div className="pt-4 border-t border-[#D6DDEA] space-y-5">
               <h3 className="font-heading font-bold text-base text-[#071B3A]">
-                Remaining Team Debaters
+                Team Members (Names &amp; Phone Numbers)
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="speaker2" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                    Speaker 2 Full Name *
-                  </label>
-                  <input
-                    id="speaker2"
-                    type="text"
-                    required
-                    placeholder="Speaker 2 name"
-                    value={formData.speaker2Name}
-                    onChange={(e) => setFormData({ ...formData, speaker2Name: e.target.value })}
-                    className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                  />
-                  {errors.speaker2Name && (
-                    <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.speaker2Name}</p>
-                  )}
-                </div>
 
-                <div>
-                  <label htmlFor="speaker3" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                    Speaker 3 Full Name *
-                  </label>
-                  <input
-                    id="speaker3"
-                    type="text"
-                    required
-                    placeholder="Speaker 3 name"
-                    value={formData.speaker3Name}
-                    onChange={(e) => setFormData({ ...formData, speaker3Name: e.target.value })}
-                    className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                  />
-                  {errors.speaker3Name && (
-                    <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.speaker3Name}</p>
-                  )}
+              {/* Member 1 */}
+              <div className="p-4 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA] space-y-3">
+                <span className="text-xs font-bold text-[#E31C2A] uppercase tracking-wider block">
+                  Member 1 (Team Leader)
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="member1Name" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      id="member1Name"
+                      type="text"
+                      required
+                      placeholder="Member 1 name"
+                      value={formData.member1Name}
+                      onChange={(e) => setFormData({ ...formData, member1Name: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
+                    />
+                    {errors.member1Name && (
+                      <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.member1Name}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="member1Phone" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                      Phone Number *
+                    </label>
+                    <input
+                      id="member1Phone"
+                      type="tel"
+                      required
+                      placeholder="01XXXXXXXXX"
+                      value={formData.member1Phone}
+                      onChange={(e) => setFormData({ ...formData, member1Phone: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
+                    />
+                    {errors.member1Phone && (
+                      <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.member1Phone}</p>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="reserveSpeaker" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                  Reserve Speaker (Optional)
-                </label>
-                <input
-                  id="reserveSpeaker"
-                  type="text"
-                  placeholder="Reserve debater name"
-                  value={formData.reserveSpeakerName}
-                  onChange={(e) => setFormData({ ...formData, reserveSpeakerName: e.target.value })}
-                  className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                />
+              {/* Member 2 */}
+              <div className="p-4 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA] space-y-3">
+                <span className="text-xs font-bold text-[#071B3A] uppercase tracking-wider block">
+                  Member 2
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="member2Name" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      id="member2Name"
+                      type="text"
+                      required
+                      placeholder="Member 2 name"
+                      value={formData.member2Name}
+                      onChange={(e) => setFormData({ ...formData, member2Name: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
+                    />
+                    {errors.member2Name && (
+                      <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.member2Name}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="member2Phone" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                      Phone Number *
+                    </label>
+                    <input
+                      id="member2Phone"
+                      type="tel"
+                      required
+                      placeholder="01XXXXXXXXX"
+                      value={formData.member2Phone}
+                      onChange={(e) => setFormData({ ...formData, member2Phone: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
+                    />
+                    {errors.member2Phone && (
+                      <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.member2Phone}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Member 3 */}
+              <div className="p-4 rounded-[8px] bg-[#F8FAFD] border border-[#D6DDEA] space-y-3">
+                <span className="text-xs font-bold text-[#071B3A] uppercase tracking-wider block">
+                  Member 3
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="member3Name" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      id="member3Name"
+                      type="text"
+                      required
+                      placeholder="Member 3 name"
+                      value={formData.member3Name}
+                      onChange={(e) => setFormData({ ...formData, member3Name: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
+                    />
+                    {errors.member3Name && (
+                      <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.member3Name}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="member3Phone" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                      Phone Number *
+                    </label>
+                    <input
+                      id="member3Phone"
+                      type="tel"
+                      required
+                      placeholder="01XXXXXXXXX"
+                      value={formData.member3Phone}
+                      onChange={(e) => setFormData({ ...formData, member3Phone: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
+                    />
+                    {errors.member3Phone && (
+                      <p className="text-xs text-[#E31C2A] mt-1 font-medium">{errors.member3Phone}</p>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Teacher / Moderator & Notes */}
-            <div className="pt-4 border-t border-[#D6DDEA] space-y-4">
-              <h3 className="font-heading font-bold text-base text-[#071B3A]">
-                Teacher in Charge / Moderator (Optional)
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="coachName" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                    Teacher Name
-                  </label>
-                  <input
-                    id="coachName"
-                    type="text"
-                    placeholder="Moderator or teacher"
-                    value={formData.coachName}
-                    onChange={(e) => setFormData({ ...formData, coachName: e.target.value })}
-                    className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="coachPhone" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                    Teacher Phone
-                  </label>
-                  <input
-                    id="coachPhone"
-                    type="tel"
-                    placeholder="01XXXXXXXXX"
-                    value={formData.coachPhone}
-                    onChange={(e) => setFormData({ ...formData, coachPhone: e.target.value })}
-                    className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="notes" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                  Notes or Inquiries (Optional)
-                </label>
-                <textarea
-                  id="notes"
-                  rows={2}
-                  placeholder="Any questions or specific scheduling needs..."
-                  value={formData.notes}
-                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
-                />
-              </div>
+            {/* 4. Note (Questions if they have any, Optional) */}
+            <div className="pt-2">
+              <label htmlFor="note" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                Note / Questions (Optional)
+              </label>
+              <textarea
+                id="note"
+                rows={3}
+                placeholder="Write any questions or scheduling notes here..."
+                value={formData.note}
+                onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+                className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
+              />
             </div>
 
-            {/* Submit Button with Loading State */}
+            {/* Submit Button */}
             <div className="pt-2">
               <button
                 type="submit"
@@ -634,7 +625,7 @@ export default function Debate2026Page() {
                 {loading ? "Submitting..." : "Submit Team Registration"}
               </button>
               <p className="text-xs text-[#071B3A]/60 text-center mt-3">
-                All debaters must be active enrolled students of the stated institution.
+                All 3 team members must be enrolled students of the stated institution.
               </p>
             </div>
           </form>
@@ -656,7 +647,7 @@ export default function Debate2026Page() {
                 Can an institution register more than one team?
               </h3>
               <p className="text-xs sm:text-sm text-[#071B3A]/75 leading-relaxed">
-                Yes. Recognized schools, colleges, and madrasas may register multiple debating teams (e.g., Team A, Team B) across Junior and Senior divisions, subject to total bracket capacity.
+                Yes. Recognized schools, colleges, and madrasas may register multiple debating teams (e.g., Team Alpha, Team Beta) across Junior and Senior categories.
               </p>
             </div>
 

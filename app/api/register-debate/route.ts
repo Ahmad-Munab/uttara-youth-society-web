@@ -1,51 +1,76 @@
 import { NextResponse } from "next/server";
-import { saveDebateRegistration, DebateRegistrationInput } from "@/lib/db";
+import { saveDebateRegistration, DebateTeamInput } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
     const {
-      division,
-      teamName,
+      category,
+      division, // support alias if sent
       institution,
-      institutionCity,
+      clubName,
+      teamName,
+      member1Name,
+      member1Phone,
+      member2Name,
+      member2Phone,
+      member3Name,
+      member3Phone,
+      // also alias support if someone sends leaderName/leaderPhone
       leaderName,
       leaderPhone,
-      leaderEmail,
       speaker2Name,
       speaker3Name,
-      reserveSpeakerName,
-      coachName,
-      coachPhone,
+      note,
       notes,
     } = body;
 
-    // Validate essential fields
-    if (!division || !teamName || !institution || !leaderName || !leaderPhone || !speaker2Name || !speaker3Name) {
+    const finalCategory = category || division;
+    const finalMember1Name = member1Name || leaderName;
+    const finalMember1Phone = member1Phone || leaderPhone;
+    const finalMember2Name = member2Name || speaker2Name;
+    const finalMember3Name = member3Name || speaker3Name;
+    const finalMember2Phone = member2Phone || "";
+    const finalMember3Phone = member3Phone || "";
+    const finalNote = note || notes || "";
+
+    // Validate strictly required fields
+    if (
+      !finalCategory ||
+      !institution ||
+      !teamName ||
+      !finalMember1Name ||
+      !finalMember1Phone ||
+      !finalMember2Name ||
+      !finalMember2Phone ||
+      !finalMember3Name ||
+      !finalMember3Phone
+    ) {
       return NextResponse.json(
-        { error: "Please provide all required fields: Division, Team Name, Institution, Leader and Speaker details." },
+        {
+          error:
+            "Please provide all required fields: Category, Institution, Team Name, and all 3 Team Members' Names and Phone Numbers.",
+        },
         { status: 400 }
       );
     }
 
-    const registrationData: DebateRegistrationInput = {
-      division,
-      teamName: String(teamName).trim(),
+    const teamData: DebateTeamInput = {
+      category: String(finalCategory).trim(),
       institution: String(institution).trim(),
-      institutionCity: institutionCity ? String(institutionCity).trim() : "Uttara, Dhaka",
-      leaderName: String(leaderName).trim(),
-      leaderPhone: String(leaderPhone).trim(),
-      leaderEmail: String(leaderEmail || "").trim(),
-      speaker2Name: String(speaker2Name).trim(),
-      speaker3Name: String(speaker3Name).trim(),
-      reserveSpeakerName: reserveSpeakerName ? String(reserveSpeakerName).trim() : undefined,
-      coachName: coachName ? String(coachName).trim() : undefined,
-      coachPhone: coachPhone ? String(coachPhone).trim() : undefined,
-      notes: notes ? String(notes).trim() : undefined,
+      clubName: clubName ? String(clubName).trim() : undefined,
+      teamName: String(teamName).trim(),
+      member1Name: String(finalMember1Name).trim(),
+      member1Phone: String(finalMember1Phone).trim(),
+      member2Name: String(finalMember2Name).trim(),
+      member2Phone: String(finalMember2Phone).trim(),
+      member3Name: String(finalMember3Name).trim(),
+      member3Phone: String(finalMember3Phone).trim(),
+      note: finalNote ? String(finalNote).trim() : undefined,
     };
 
-    const result = await saveDebateRegistration(registrationData);
+    const result = await saveDebateRegistration(teamData);
 
     return NextResponse.json(
       {
