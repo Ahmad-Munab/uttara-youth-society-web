@@ -8,7 +8,7 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    phone: "",
     subject: "General Inquiry",
     message: "",
   });
@@ -54,14 +54,7 @@ export default function ContactPage() {
                   <span className="block text-xs font-bold text-[#E31C2A] uppercase tracking-wider mb-1">
                     Headquarters
                   </span>
-                  <p className="font-medium text-[#071B3A]">Uttara, Dhaka-1230, Bangladesh</p>
-                </div>
-
-                <div className="p-4 rounded-[8px] bg-white border border-[#D6DDEA]">
-                  <span className="block text-xs font-bold text-[#E31C2A] uppercase tracking-wider mb-1">
-                    Official Email
-                  </span>
-                  <p className="font-medium text-[#071B3A]">contact@uttarayouthsociety.org</p>
+                  <p className="font-medium text-[#071B3A]">House 76, Road 16, Sector 14, Uttara, Dhaka</p>
                 </div>
 
                 <div className="p-4 rounded-[8px] bg-white border border-[#D6DDEA]">
@@ -106,16 +99,16 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                      Email Address *
+                    <label htmlFor="phone" className="block text-xs font-semibold text-[#071B3A] mb-1">
+                      Phone Number *
                     </label>
                     <input
-                      id="email"
-                      type="email"
+                      id="phone"
+                      type="tel"
                       required
-                      placeholder="name@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="01XXXXXXXXX"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"
                     />
                   </div>

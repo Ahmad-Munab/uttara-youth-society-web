@@ -95,7 +95,7 @@ export default function MemberPage() {
             <div className="p-8 rounded-[8px] bg-emerald-50 border border-emerald-300 text-emerald-900 space-y-2">
               <h3 className="font-heading font-bold text-xl">Membership Application Received</h3>
               <p className="text-sm leading-relaxed">
-                Thank you for applying to become a member of Uttara Youth Society. Our member coordination desk will contact you via phone or email for the upcoming orientation session.
+                Thank you for applying to become a member of Uttara Youth Society. Our member coordination desk will contact you via phone for the upcoming orientation session.
               </p>
               {memberId && (
                 <p className="text-xs font-mono font-bold mt-2 bg-white/80 px-2 py-1 rounded inline-block">
@@ -216,13 +216,12 @@ export default function MemberPage() {
 
                   <div>
                     <label htmlFor="email" className="block text-xs font-semibold text-[#071B3A] mb-1">
-                      Email Address *
+                      Email Address <span className="text-[#071B3A]/50 font-normal">(Optional)</span>
                     </label>
                     <input
                       id="email"
                       type="email"
-                      required
-                      placeholder="you@example.com"
+                      placeholder="you@example.com (optional)"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-3.5 py-3 rounded-[8px] border border-[#D6DDEA] bg-white text-sm text-[#071B3A] focus-visible:outline-2 focus-visible:outline-[#071B3A]"

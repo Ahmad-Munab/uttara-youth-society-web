@@ -586,12 +586,16 @@ export default function AdminPage() {
                             >
                               {m.phone}
                             </a>
-                            <a
-                              href={`mailto:${m.email}`}
-                              className="text-[11px] text-[#071B3A]/70 hover:underline block"
-                            >
-                              {m.email}
-                            </a>
+                            {m.email ? (
+                              <a
+                                href={`mailto:${m.email}`}
+                                className="text-[11px] text-[#071B3A]/70 hover:underline block"
+                              >
+                                {m.email}
+                              </a>
+                            ) : (
+                              <span className="text-[11px] text-[#071B3A]/40 block">—</span>
+                            )}
                           </td>
                           <td className="px-4 py-3.5 text-xs text-[#071B3A]/75 max-w-xs truncate">
                             {(m.areasOfInterest || []).join(", ") || "—"}
@@ -783,12 +787,16 @@ export default function AdminPage() {
                 </div>
                 <div className="p-3.5 rounded-[8px] border border-[#D6DDEA] bg-white">
                   <span className="text-[11px] font-bold text-[#071B3A]/70 block">Email Address</span>
-                  <a
-                    href={`mailto:${selectedMember.email}`}
-                    className="text-xs font-semibold text-[#071B3A] hover:underline truncate block"
-                  >
-                    ✉️ {selectedMember.email}
-                  </a>
+                  {selectedMember.email ? (
+                    <a
+                      href={`mailto:${selectedMember.email}`}
+                      className="text-xs font-semibold text-[#071B3A] hover:underline truncate block"
+                    >
+                      ✉️ {selectedMember.email}
+                    </a>
+                  ) : (
+                    <span className="text-xs text-[#071B3A]/50 block">Not provided</span>
+                  )}
                 </div>
               </div>
 

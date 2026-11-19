@@ -94,16 +94,12 @@ export default function Footer() {
             <div className="space-y-2.5 text-sm text-[#E8EEF8]/80">
               <p className="flex items-start gap-2.5">
                 <span className="text-[#FFC400] font-bold">Location</span>
-                <span>Uttara, Dhaka-1230, Bangladesh</span>
-              </p>
-              <p className="flex items-center gap-2.5">
-                <span className="text-[#FFC400] font-bold">Email</span>
-                <span>contact@uttarayouthsociety.org</span>
+                <span>House 76, Road 16, Sector 14, Uttara, Dhaka</span>
               </p>
               <p className="flex items-center gap-2.5">
                 <span className="text-[#FFC400] font-bold">Social</span>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/uttara.ys"
                   target="_blank"
                   rel="noreferrer"
                   className="text-white hover:underline underline-offset-2 font-medium"

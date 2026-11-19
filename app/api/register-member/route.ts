@@ -17,9 +17,9 @@ export async function POST(request: Request) {
       previousExperience,
     } = body;
 
-    if (!fullName || !age || !institutionOrOccupation || !residenceArea || !phone || !email) {
+    if (!fullName || !age || !institutionOrOccupation || !residenceArea || !phone) {
       return NextResponse.json(
-        { error: "Please fill out all required fields: Name, Age, Institution/Occupation, Residence Area, Phone, and Email." },
+        { error: "Please fill out all required fields: Name, Age, Institution/Occupation, Residence Area, and Phone." },
         { status: 400 }
       );
     }
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       institutionOrOccupation: String(institutionOrOccupation).trim(),
       residenceArea: String(residenceArea).trim(),
       phone: String(phone).trim(),
-      email: String(email).trim(),
+      email: email ? String(email).trim() : "",
       areasOfInterest: Array.isArray(areasOfInterest) ? areasOfInterest : [],
       availability: availability ? String(availability).trim() : "Flexible",
       previousExperience: previousExperience ? String(previousExperience).trim() : undefined,

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
@@ -93,6 +94,102 @@ export default function EventsPage() {
                 >
                   View Tournament Guide
                 </Link>
+              </div>
+            </div>
+
+            {/* Other Documented Events & Community Screenings */}
+            <div className="pt-10 space-y-6">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#071B3A]" />
+                <h2 className="text-xs font-bold uppercase tracking-wider text-[#071B3A]">
+                  Community Screenings &amp; Tournaments
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Event 1: FIFA World Cup Live Screening */}
+                <div className="bg-white rounded-[16px] border border-[#D6DDEA] overflow-hidden shadow-xs flex flex-col justify-between">
+                  <div>
+                    <div className="relative aspect-[16/10] w-full bg-[#071B3A]">
+                      <Image
+                        src="/images/activities/hero-screening.jpg"
+                        alt="FIFA World Cup 2026 Live Screening"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/85 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3 bg-[#071B3A]/90 backdrop-blur-xs px-2.5 py-1 rounded-[6px] border border-white/20 text-white text-[11px] font-bold uppercase tracking-wider">
+                        Public Community Festival
+                      </div>
+                    </div>
+
+                    <div className="p-6 space-y-2">
+                      <p className="bangla-slogan text-xs font-bold text-[#E31C2A]">
+                        “ফিফা ওয়ার্ল্ড কাপ ২০২৬ মুগ্ধ মঞ্চ — সকলের জন্য উন্মুক্ত”
+                      </p>
+                      <h3 className="font-heading font-bold text-xl text-[#071B3A]">
+                        FIFA World Cup 2026 Live Screening
+                      </h3>
+                      <p className="text-xs text-[#071B3A]/60 font-medium">
+                        📍 Uttara Public Venue · Open to All Residents
+                      </p>
+                      <p className="text-sm text-[#071B3A]/80 leading-relaxed pt-1">
+                        Massive open-air live match screening festival bringing football enthusiasts and youth together in an electric, respectful community celebration.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <Link
+                      href="/activities"
+                      className="inline-flex items-center text-xs font-semibold text-[#071B3A] hover:text-[#E31C2A] transition-colors"
+                    >
+                      View in Activities Gallery →
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Event 2: Cricket Tournament */}
+                <div className="bg-white rounded-[16px] border border-[#D6DDEA] overflow-hidden shadow-xs flex flex-col justify-between">
+                  <div>
+                    <div className="relative aspect-[16/10] w-full bg-[#071B3A]">
+                      <Image
+                        src="/images/activities/cricket-tournament.jpg"
+                        alt="Independence Day Cricket Tournament"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/85 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3 bg-[#071B3A]/90 backdrop-blur-xs px-2.5 py-1 rounded-[6px] border border-white/20 text-white text-[11px] font-bold uppercase tracking-wider">
+                        Youth Sports Tournament
+                      </div>
+                    </div>
+
+                    <div className="p-6 space-y-2">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#071B3A]/60">
+                        Annual Athletics Meet
+                      </p>
+                      <h3 className="font-heading font-bold text-xl text-[#071B3A]">
+                        Independence Day Cricket Championship
+                      </h3>
+                      <p className="text-xs text-[#071B3A]/60 font-medium">
+                        📍 Uttara Sector Grounds · Student Teams
+                      </p>
+                      <p className="text-sm text-[#071B3A]/80 leading-relaxed pt-1">
+                        Inter-ward cricket tournament arranged by Uttara Youth Society promoting physical fitness, discipline, and sportsmanship among youth.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <Link
+                      href="/activities"
+                      className="inline-flex items-center text-xs font-semibold text-[#071B3A] hover:text-[#E31C2A] transition-colors"
+                    >
+                      View in Activities Gallery →
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

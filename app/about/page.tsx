@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
@@ -78,25 +79,44 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-[8px] border border-[#D6DDEA] space-y-5">
-              <h3 className="font-heading font-bold text-lg text-[#071B3A] border-b border-[#D6DDEA] pb-3">
-                Two Complementary Commitments
-              </h3>
-              <div className="space-y-1">
-                <span className="text-xs font-bold text-[#E31C2A] uppercase tracking-wider block">
-                  1. Developing Youth Potential
-                </span>
-                <p className="text-sm text-[#071B3A]/80 leading-relaxed">
-                  Platforms for debate competitions, public speaking, quiz bowls, leadership, and career guidance.
-                </p>
+            <div className="lg:col-span-5 bg-white rounded-[24px] border border-[#D6DDEA] overflow-hidden shadow-sm">
+              <div className="relative h-48 w-full bg-[#071B3A]">
+                <Image
+                  src="/images/activities/volunteers-team.jpg"
+                  alt="Uttara Youth Society Volunteers"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/85 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-4 text-white">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#FFC400] block">
+                    Community Volunteers
+                  </span>
+                  <span className="text-xs font-semibold text-white/90">
+                    Over 12 Years of Direct Service
+                  </span>
+                </div>
               </div>
-              <div className="space-y-1">
-                <span className="text-xs font-bold text-[#071B3A] uppercase tracking-wider block">
-                  2. Encouraging Positive Social Contribution
-                </span>
-                <p className="text-sm text-[#071B3A]/80 leading-relaxed">
-                  Involving students in humanitarian relief, winter clothing distribution, tree plantation, and community welfare.
-                </p>
+              <div className="p-6 sm:p-7 space-y-5">
+                <h3 className="font-heading font-bold text-lg text-[#071B3A] border-b border-[#D6DDEA] pb-3">
+                  Two Complementary Commitments
+                </h3>
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-[#E31C2A] uppercase tracking-wider block">
+                    1. Developing Youth Potential
+                  </span>
+                  <p className="text-sm text-[#071B3A]/80 leading-relaxed">
+                    Platforms for debate competitions, public speaking, quiz bowls, leadership, and career guidance.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-[#071B3A] uppercase tracking-wider block">
+                    2. Encouraging Positive Social Contribution
+                  </span>
+                  <p className="text-sm text-[#071B3A]/80 leading-relaxed">
+                    Involving students in humanitarian relief, winter clothing distribution, tree plantation, and community welfare.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
