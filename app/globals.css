@@ -46,13 +46,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings in Bricolage Grotesque */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), 'Bricolage Grotesque', sans-serif;
-  letter-spacing: -0.03em;
-  font-weight: 700;
-  color: inherit;
-  text-wrap: balance;
+@layer base {
+  /* Headings in Bricolage Grotesque */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), 'Bricolage Grotesque', sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    color: inherit;
+    text-wrap: balance;
+  }
 }
 
 /* Display Bengali text in Hind Siliguri with proper weight and line height */

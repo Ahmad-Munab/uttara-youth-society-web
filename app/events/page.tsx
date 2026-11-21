@@ -115,6 +115,7 @@ export default function EventsPage() {
                         src="/images/activities/hero-screening.jpg"
                         alt="FIFA World Cup 2026 Live Screening"
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/85 via-transparent to-transparent" />
@@ -157,6 +158,7 @@ export default function EventsPage() {
                         src="/images/activities/cricket-tournament.jpg"
                         alt="Independence Day Cricket Tournament"
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/85 via-transparent to-transparent" />

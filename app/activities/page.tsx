@@ -400,6 +400,7 @@ export default function ActivitiesPage() {
                     src={filtered[lightboxIndex].image!}
                     alt={filtered[lightboxIndex].title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 800px"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/90 via-[#071B3A]/30 to-transparent" />

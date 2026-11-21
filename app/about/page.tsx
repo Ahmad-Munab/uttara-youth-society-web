@@ -85,6 +85,7 @@ export default function AboutPage() {
                   src="/images/activities/volunteers-team.jpg"
                   alt="Uttara Youth Society Volunteers"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/85 via-transparent to-transparent" />
