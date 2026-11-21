@@ -146,7 +146,7 @@ export default function Home() {
                 <div className="relative rounded-[24px] border border-[#D6DDEA] bg-white p-4 sm:p-5 shadow-sm overflow-hidden group">
                   <div className="relative aspect-[4/3] rounded-[16px] overflow-hidden border border-[#D6DDEA]">
                     <Image
-                      src="/images/activities/youth-forum.jpg"
+                      src="/images/activities/debate-competion-awards.jpg"
                       alt="Speech and Debate Session"
                       fill
                       sizes="(max-width: 1024px) 100vw, 500px"
@@ -220,8 +220,8 @@ export default function Home() {
                 <div className="relative rounded-[24px] border border-[#D6DDEA] bg-white p-4 sm:p-5 shadow-sm overflow-hidden group">
                   <div className="relative aspect-[4/3] rounded-[16px] overflow-hidden border border-[#D6DDEA]">
                     <Image
-                      src="/images/activities/relief-drive.jpg"
-                      alt="Community Relief and Winter Drive"
+                      src="/images/activities/charity-food-givaway.jpg"
+                      alt="Community Relief and Food Distribution"
                       fill
                       sizes="(max-width: 1024px) 100vw, 500px"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"

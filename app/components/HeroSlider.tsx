@@ -15,59 +15,69 @@ interface HeroSlide {
 }
 
 const slides: HeroSlide[] = [
+
   {
-    id: "fifa-screening",
-    image: "/images/activities/hero-screening.jpg",
+    id: "worldcup-screening",
+    image: "/images/activities/showing-worldcup.jpg",
     tag: "Community Festival",
-    title: "Uniting Youth Through Community Gatherings",
-    subtitle: "Massive open-air public celebrations creating active, safe spaces for Uttara youth.",
+    title: "Open-Air FIFA World Cup Public Screening",
+    subtitle: "Giant-screen match broadcasts uniting passionate sports fans, local families, and youth in Uttara.",
     href: "/activities",
     cta: "Explore Initiatives",
-  },
-  {
-    id: "debate-championship",
-    image: "/images/activities/youth-forum.jpg",
-    tag: "Debate 2026",
-    title: "Uttara Inter-School & College Debate Championship",
-    subtitle: "3v3 Bengali Asian Parliamentary debate festival fostering civic dialogue.",
-    href: "/events/debate-2026",
-    cta: "Register Team",
   },
   {
     id: "cricket-tournament",
     image: "/images/activities/cricket-tournament.jpg",
     tag: "Youth Athletics",
     title: "Independence Day Youth Cricket Championship",
-    subtitle: "Competitive tournaments promoting sportsmanship and health across Uttara sectors.",
+    subtitle: "Competitive tournaments promoting sportsmanship, athletic discipline, and health across Uttara sectors.",
     href: "/activities",
     cta: "View Sports Work",
   },
   {
-    id: "relief-drive",
-    image: "/images/activities/relief-drive.jpg",
+    id: "badminton-championship",
+    image: "/images/activities/badminton-tournament.jpg",
+    tag: "Youth Sports",
+    title: "Uttara Youth Badminton Championship",
+    subtitle: "Inter-sector athletic competitions building camaraderie, agility, and active lifestyles among students.",
+    href: "/activities",
+    cta: "See Sports Archive",
+  },
+  {
+    id: "food-relief",
+    image: "/images/activities/charity-food-givaway.jpg",
     tag: "Humanitarian Relief",
-    title: "Seasonal Winter Clothing & Disaster Relief",
-    subtitle: "Over a decade of student volunteer mobilization supporting vulnerable families.",
+    title: "Community Food Relief & Charity Giveaway",
+    subtitle: "Student volunteer mobilization distributing emergency food parcels and meals to vulnerable families.",
     href: "/activities",
     cta: "See Relief Archive",
   },
   {
-    id: "literacy-campaign",
-    image: "/images/activities/literacy-campaign.jpg",
+    id: "literacy-camp",
+    image: "/images/activities/literacy-camp.jpg",
     tag: "Child Education",
-    title: "Community Child Literacy Outreach",
-    subtitle: "Student tutors delivering reading lessons, writing slates, and books.",
+    title: "Community Child Literacy Outreach Camp",
+    subtitle: "Volunteer student tutors delivering reading lessons, writing slates, and books in neighborhood learning spaces.",
     href: "/activities",
     cta: "Explore Literacy",
   },
   {
-    id: "community-award",
-    image: "/images/activities/community-award.jpg",
+    id: "career-counselling",
+    image: "/images/activities/career-counselling-program.jpg",
     tag: "Student Mentorship",
-    title: "Merit Student Felicitation Ceremony",
-    subtitle: "Honoring secondary and college scholars with academic roadmap guidance.",
+    title: "Youth Career Counselling & Mentorship Program",
+    subtitle: "Providing secondary and college scholars with board exam roadmaps and higher education guidance.",
     href: "/activities",
-    cta: "View Honors",
+    cta: "View Mentorship",
+  },
+  {
+    id: "debate-championship",
+    image: "/images/activities/debate-competion-awards.jpg",
+    tag: "Debate & Reason",
+    title: "Uttara Debate Championship Awards Ceremony",
+    subtitle: "3v3 Bengali Asian Parliamentary debate festival fostering civic dialogue and critical thinking.",
+    href: "/events/debate-2026",
+    cta: "Register Team",
   },
 ];
 
@@ -162,9 +172,8 @@ export default function HeroSlider() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                isActive ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
-              }`}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+                }`}
               aria-hidden={!isActive}
             >
               <Image
@@ -173,9 +182,8 @@ export default function HeroSlider() {
                 fill
                 priority={idx === 0}
                 sizes="100vw"
-                className={`object-cover object-center transition-transform duration-[6000ms] ease-out ${
-                  isActive ? "scale-105" : "scale-100"
-                }`}
+                className={`object-cover object-center transition-transform duration-[6000ms] ease-out ${isActive ? "scale-105" : "scale-100"
+                  }`}
               />
             </div>
           );
@@ -254,9 +262,8 @@ export default function HeroSlider() {
                       key={slide.id}
                       type="button"
                       onClick={() => goToSlide(idx)}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        isSelected ? "w-5 bg-[#FFC400]" : "w-1.5 bg-white/40 hover:bg-white/70"
-                      }`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${isSelected ? "w-5 bg-[#FFC400]" : "w-1.5 bg-white/40 hover:bg-white/70"
+                        }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
                   );

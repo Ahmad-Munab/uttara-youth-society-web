@@ -82,8 +82,8 @@ export default function AboutPage() {
             <div className="lg:col-span-5 bg-white rounded-[24px] border border-[#D6DDEA] overflow-hidden shadow-sm">
               <div className="relative h-48 w-full bg-[#071B3A]">
                 <Image
-                  src="/images/activities/volunteers-team.jpg"
-                  alt="Uttara Youth Society Volunteers"
+                  src="/images/activities/career-counselling-program.jpg"
+                  alt="Uttara Youth Society Student Programs & Mentorship"
                   fill
                   sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover"
@@ -91,10 +91,10 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071B3A]/85 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-4 text-white">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-[#FFC400] block">
-                    Community Volunteers
+                    Student Empowerment &amp; Guidance
                   </span>
                   <span className="text-xs font-semibold text-white/90">
-                    Over 12 Years of Direct Service
+                    Over 12 Years of Direct Youth Programs
                   </span>
                 </div>
               </div>
